@@ -31,6 +31,9 @@ vim.opt.clipboard = "unnamedplus"
 -- set leader
 vim.g.mapleader = " "
 
+-- copilot
+vim.g.copilot_assume_mapped = true
+
 ---------------------------------------------------------------------
 --------------------------- MAPPINGS --------------------------------
 ---------------------------------------------------------------------
@@ -66,6 +69,5 @@ vim.keymap.set("n", "<leader>e", "<cmd>:NvimTreeFocus<CR>")
 vim.keymap.set("n", "<C-n>", "<cmd>:NvimTreeToggle<CR>")
 
 -- github copilot
-vim.g.copilot_no_tab_map = true
 vim.api.nvim_set_keymap("i", "<C-j>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 
