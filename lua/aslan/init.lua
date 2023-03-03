@@ -71,3 +71,16 @@ vim.keymap.set("n", "<C-n>", "<cmd>:NvimTreeToggle<CR>")
 -- github copilot
 vim.api.nvim_set_keymap("i", "<C-j>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 
+-- lsp
+vim.keymap.set("n", "<leader>f", "<cmd>:LspZeroFormat<CR>")
+
+---------------------------------------------------------------------
+--------------------------- AUTOCOMMANDS ----------------------------
+---------------------------------------------------------------------
+
+vim.api.nvim_create_autocmd(
+    "FileType", {
+        pattern = { "javascript", "typescript", "typescriptreact", "javascriptreact" },
+        command = "setlocal ts=2 sts=2 sw=2 expandtab",
+    }
+)
