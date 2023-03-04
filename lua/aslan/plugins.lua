@@ -11,6 +11,8 @@ return require('packer').startup(function(use)
   use "EdenEast/nightfox.nvim"
   use "navarasu/onedark.nvim"
 
+  use("christoomey/vim-tmux-navigator")
+
   -- navigation
   use 'nvim-lua/plenary.nvim'
   use {
@@ -20,6 +22,8 @@ return require('packer').startup(function(use)
   }
   use 'ThePrimeagen/harpoon'
 
+  -- git diff viewer
+  use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 
   -- nvimtree
   use {

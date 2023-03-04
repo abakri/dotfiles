@@ -74,6 +74,10 @@ vim.api.nvim_set_keymap("i", "<C-j>", 'copilot#Accept("<CR>")', { silent = true,
 -- lsp
 vim.keymap.set("n", "<leader>f", "<cmd>:LspZeroFormat<CR>")
 
+-- git diff
+vim.keymap.set("n", "<leader>d", "<cmd>:DiffviewOpen<CR>")
+vim.keymap.set("n", "<leader><Esc>", "<cmd>:tabclose<CR>")
+
 ---------------------------------------------------------------------
 --------------------------- AUTOCOMMANDS ----------------------------
 ---------------------------------------------------------------------
