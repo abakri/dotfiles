@@ -25,17 +25,39 @@ return require('packer').startup(function(use)
   -- git diff viewer
   use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 
+  -- vim surround
+  use({
+      "kylechui/nvim-surround",
+      tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+      config = function()
+          require("nvim-surround").setup({
+              -- Configuration here, or leave empty to use defaults
+          })
+      end
+  })
+
   -- nvimtree
   use {
-      'nvim-tree/nvim-tree.lua',
+      "nvim-tree/nvim-tree.lua",
       requires = {
-          'nvim-tree/nvim-web-devicons', -- optional, for file icons
+          "nvim-tree/nvim-web-devicons", -- optional, for file icons
       },
-      tag = 'nightly' -- optional, updated every week. (see issue #1193)
+      tag = "nightly" -- optional, updated every week. (see issue #1193)
   }
 
   -- treesitter and lsp
-  use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+  use("nvim-treesitter/nvim-treesitter", {run = ':TSUpdate'})
+  use({
+      "jose-elias-alvarez/null-ls.nvim",
+      config = function()
+          require("null-ls").setup({
+              sources = {
+                  require("null-ls").builtins.formatting.black, -- black formatter
+              },
+          })
+      end,
+      requires = { "nvim-lua/plenary.nvim" },
+  })
   use {
           'VonHeikemen/lsp-zero.nvim',
           branch = 'v1.x',

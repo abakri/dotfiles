@@ -8,7 +8,7 @@ local lsp = require('lsp-zero').preset({
 lsp.ensure_installed({
     "tsserver",
     "rust_analyzer",
-    "pylsp",
+    "pyright",
 })
 
 lsp.configure("lua_ls", {
@@ -34,33 +34,17 @@ lsp.configure("lua_ls", {
     },
 })
 
-lsp.configure("pylsp", {
+lsp.configure("pyright", {
     settings = {
-        pylsp = {
-            plugins = {
-                autopep8 = {
-                    enabled = false,
-                },
-                pycodestyle = {
-                    enabled = true,
-                    maxLineLength = 100,
-                },
-                yapf = {
-                    enabled = true,
-                },
-                pydocstyle = {
-                    enabled = true,
-                    convention = "google",
-                },
-                rope_auto_import = {
-                    enabled = true,
-                },
-                rope_completion = {
-                    enabled = true,
-                },
-            }
-        }
-    }
+        python = {
+            analysis = {
+                autoImportCompletions = true,
+                typeCheckingMode = "basic",
+                autoSearchPaths = true,
+                useLibraryCodeForTypes = true,
+            },
+        },
+    },
 })
 
 lsp.setup()
