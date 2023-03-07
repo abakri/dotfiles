@@ -22,8 +22,10 @@ return require('packer').startup(function(use)
     }
     use 'ThePrimeagen/harpoon'
 
+    use "nvim-tree/nvim-web-devicons"
+
     -- git diff viewer
-    use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+    use { 'sindrets/diffview.nvim', requires = { "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons" } }
 
     -- vim surround
     use({
@@ -68,13 +70,6 @@ return require('packer').startup(function(use)
     use("nvim-treesitter/nvim-treesitter", { run = ':TSUpdate' })
     use({
         "jose-elias-alvarez/null-ls.nvim",
-        config = function()
-            require("null-ls").setup({
-                sources = {
-                    require("null-ls").builtins.formatting.black, -- black formatter
-                },
-            })
-        end,
         requires = { "nvim-lua/plenary.nvim" },
     })
     use {
