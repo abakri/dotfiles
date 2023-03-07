@@ -23,7 +23,7 @@ vim.opt.wrap = false
 vim.opt.swapfile = false
 vim.opt.backup = false
 
-vim.opt.hlsearch = true
+vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
 vim.opt.clipboard = "unnamedplus"
@@ -63,8 +63,11 @@ vim.keymap.set("n", "Q", "<nop>")
 -- harpoon
 vim.keymap.set("n", "<leader>0", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>")
 vim.keymap.set("n", "<leader>`", "<cmd>lua require('harpoon.mark').add_file()<CR>")
-vim.keymap.set("n", "<leader>1", "<cmd>lua require('harpoon.ui').nav_prev()<CR>")
-vim.keymap.set("n", "<leader>2", "<cmd>lua require('harpoon.ui').nav_next()<CR>")
+vim.keymap.set("n", "<leader>1", "<cmd>lua require('harpoon.ui').nav_file(1)<CR>")
+vim.keymap.set("n", "<leader>2", "<cmd>lua require('harpoon.ui').nav_file(2)<CR>")
+vim.keymap.set("n", "<leader>3", "<cmd>lua require('harpoon.ui').nav_file(3)<CR>")
+vim.keymap.set("n", "<leader>4", "<cmd>lua require('harpoon.ui').nav_file(4)<CR>")
+
 
 -- nvimtree
 -- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex) -- netrw disabled

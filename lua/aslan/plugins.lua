@@ -68,6 +68,7 @@ return require('packer').startup(function(use)
 
     -- treesitter and lsp
     use("nvim-treesitter/nvim-treesitter", { run = ':TSUpdate' })
+    use 'nvim-treesitter/nvim-treesitter-context'
     use({
         "jose-elias-alvarez/null-ls.nvim",
         requires = { "nvim-lua/plenary.nvim" },
