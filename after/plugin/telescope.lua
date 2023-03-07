@@ -43,6 +43,7 @@ require("telescope").setup({
         },
     },
     defaults = {
+        path_display = { truncate = 2 },
         mappings = {
             i = {
                     ["<Esc>"] = actions.close,
