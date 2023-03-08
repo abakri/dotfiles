@@ -57,6 +57,9 @@ vim.keymap.set("n", "<leader>y", "\"+y")
 vim.keymap.set("v", "<leader>y", "\"+y")
 vim.keymap.set("n", "<leader>Y", "\"+Y")
 
+-- save hehe
+vim.keymap.set("n", "<C-s>", ":w<CR>")
+
 -- disable Q
 vim.keymap.set("n", "Q", "<nop>")
 
@@ -76,7 +79,8 @@ vim.keymap.set("n", "<C-n>", "<cmd>:NvimTreeToggle<CR>")
 vim.keymap.set("n", "<leader>o", "<cmd>:NvimTreeFindFile<CR>")
 
 -- github copilot
-vim.api.nvim_set_keymap("i", "<C-j>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+vim.api.nvim_set_keymap("i", "<leader><tab>", 'copilot#Accept("<Tab>")', { silent = true, expr = true })
+
 
 -- lsp
 vim.keymap.set("n", "<leader>f", "<cmd>:LspZeroFormat<CR>")
