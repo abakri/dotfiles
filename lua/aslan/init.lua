@@ -49,6 +49,11 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
+-- insert line below without entering insert mode
+vim.keymap.set("n", "<C-j>", "o<Esc>")
+vim.keymap.set("n", "<C-k>", "O<Esc>")
+
+
 -- toggle absolute line numbers
 vim.keymap.set("n", "<leader>l", ":set rnu!<CR>")
 
@@ -74,9 +79,8 @@ vim.keymap.set("n", "<leader>4", "<cmd>lua require('harpoon.ui').nav_file(4)<CR>
 
 -- nvimtree
 -- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex) -- netrw disabled
-vim.keymap.set("n", "<leader>e", "<cmd>:NvimTreeFocus<CR>")
+vim.keymap.set("n", "<leader>e", "<cmd>:NvimTreeFindFile<CR>")
 vim.keymap.set("n", "<C-n>", "<cmd>:NvimTreeToggle<CR>")
-vim.keymap.set("n", "<leader>o", "<cmd>:NvimTreeFindFile<CR>")
 
 -- github copilot
 vim.api.nvim_set_keymap("i", "<leader><tab>", 'copilot#Accept("<Tab>")', { silent = true, expr = true })
