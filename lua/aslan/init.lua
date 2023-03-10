@@ -50,9 +50,8 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- insert line below without entering insert mode
-vim.keymap.set("n", "<C-j>", "o<Esc>")
+vim.keymap.set("n","<C-j>", "o<Esc>")
 vim.keymap.set("n", "<C-k>", "O<Esc>")
-
 
 -- toggle absolute line numbers
 vim.keymap.set("n", "<leader>l", ":set rnu!<CR>")
@@ -76,15 +75,13 @@ vim.keymap.set("n", "<leader>2", "<cmd>lua require('harpoon.ui').nav_file(2)<CR>
 vim.keymap.set("n", "<leader>3", "<cmd>lua require('harpoon.ui').nav_file(3)<CR>")
 vim.keymap.set("n", "<leader>4", "<cmd>lua require('harpoon.ui').nav_file(4)<CR>")
 
-
 -- nvimtree
 -- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex) -- netrw disabled
-vim.keymap.set("n", "<leader>e", "<cmd>:NvimTreeFindFile<CR>")
+vim.keymap.set("n", "<leader>e", "<cmd>:NvimTreeFindFile<CR>zz")
 vim.keymap.set("n", "<C-n>", "<cmd>:NvimTreeToggle<CR>")
 
 -- github copilot
-vim.api.nvim_set_keymap("i", "<leader><tab>", 'copilot#Accept("<Tab>")', { silent = true, expr = true })
-
+vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 
 -- lsp
 vim.keymap.set("n", "<leader>f", "<cmd>:LspZeroFormat<CR>")

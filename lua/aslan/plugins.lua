@@ -10,6 +10,7 @@ return require('packer').startup(function(use)
     -- color schemes
     use "EdenEast/nightfox.nvim"
     use "navarasu/onedark.nvim"
+    use "folke/tokyonight.nvim"
 
     use("christoomey/vim-tmux-navigator")
 
