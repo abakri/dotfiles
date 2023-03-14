@@ -76,7 +76,7 @@ vim.keymap.set("n", "<leader>3", "<cmd>lua require('harpoon.ui').nav_file(3)<CR>
 vim.keymap.set("n", "<leader>4", "<cmd>lua require('harpoon.ui').nav_file(4)<CR>")
 
 -- nvimtree
--- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex) -- netrw disabled
+-- vim.keymap.set("n", "<leader>e", vim.cmd.Ex) -- netrw disabled
 vim.keymap.set("n", "<leader>e", "<cmd>:NvimTreeFindFile<CR>zz")
 vim.keymap.set("n", "<C-n>", "<cmd>:NvimTreeToggle<CR>")
 
