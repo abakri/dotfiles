@@ -40,7 +40,8 @@ lsp.configure("pyright", {
         python = {
             analysis = {
                 autoImportCompletions = true,
-                typeCheckingMode = "basic",
+                diagnosticMode = "openFilesOnly",
+                typeCheckingMode = "off",
                 autoSearchPaths = true,
                 useLibraryCodeForTypes = true,
             },

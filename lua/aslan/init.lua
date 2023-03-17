@@ -34,12 +34,17 @@ vim.g.mapleader = " "
 -- copilot
 vim.g.copilot_assume_mapped = true
 
+
 ---------------------------------------------------------------------
 --------------------------- MAPPINGS --------------------------------
 ---------------------------------------------------------------------
 -- jj or jk to escape insert mode
 vim.keymap.set("i", "jj", "<Esc>")
 vim.keymap.set("i", "jk", "<Esc>")
+
+-- no more :W
+vim.keymap.set("n", "<leader>;", ":")
+vim.keymap.set("n", ":", "<nop>") -- good bye muscle memory
 
 -- move up and down half page puts cursor in middle
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
@@ -84,12 +89,13 @@ vim.keymap.set("n", "<C-n>", "<cmd>:NvimTreeToggle<CR>")
 vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 
 -- lsp
-vim.keymap.set("n", "<leader>f", "<cmd>:LspZeroFormat<CR>")
+vim.keymap.set("n", "<leader>f", "<cmd>:lua vim.lsp.buf.format({ timeout_ms = 5000 })<CR>")
 vim.keymap.set("n", "<leader>.", "<cmd>:lua vim.lsp.buf.code_action()<CR>")
 
--- git diff
-vim.keymap.set("n", "<leader>d", "<cmd>:DiffviewOpen<CR>")
+-- diffview
+vim.keymap.set("n", "<leader>dv", "<cmd>:DiffviewOpen<CR>")
 vim.keymap.set("n", "<leader><Esc>", "<cmd>:tabclose<CR>")
+
 
 ---------------------------------------------------------------------
 --------------------------- AUTOCOMMANDS ----------------------------

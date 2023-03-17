@@ -27,9 +27,6 @@ return require('packer').startup(function(use)
 
     use "nvim-tree/nvim-web-devicons"
 
-    -- git diff viewer
-    use { 'sindrets/diffview.nvim', requires = { "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons" } }
-
     -- vim surround
     use({
         "kylechui/nvim-surround",
@@ -40,6 +37,9 @@ return require('packer').startup(function(use)
             })
         end
     })
+
+    -- git
+    use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 
     -- status bar
     use {

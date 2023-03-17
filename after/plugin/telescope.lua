@@ -13,45 +13,29 @@ require('telescope').setup({
             follow = true,
             no_ignore = true,
             no_ignore_parent = true,
-            layout_strategy = 'horizontal',
-            theme = 'dropdown',
-            layout_config = {
-                width = 0.75,
-                height = 0.75,
-                preview_width = 0.75,
-            },
         },
         git_files = {
             hidden = true,
             follow = true,
-            layout_strategy = 'horizontal',
-            theme = 'dropdown',
-            layout_config = {
-                width = 0.75,
-                height = 0.75,
-                preview_width = 0.75,
-            },
         },
         live_grep = {
             hidden = true,
             follow = true,
-            layout_strategy = 'horizontal',
-            theme = 'dropdown',
-            layout_config = {
-                width = 0.75,
-                height = 0.75,
-                preview_width = 0.75,
-            },
         },
     },
     defaults = {
+        layout_strategy = 'vertical',
         path_display = { truncate = 2 },
         mappings = {
             i = {
                     ['<Esc>'] = actions.close,
+                    ['<C-n>'] = actions.cycle_history_next,
+                    ['<C-p>'] = actions.cycle_history_prev,
             },
             n = {
                     ['q'] = actions.close,
+                    ['<C-n>'] = actions.cycle_history_next,
+                    ['<C-p>'] = actions.cycle_history_prev,
             }
         },
     },
