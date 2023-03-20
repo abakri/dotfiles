@@ -72,6 +72,9 @@ vim.keymap.set("n", "<C-s>", ":w<CR>")
 -- disable Q
 vim.keymap.set("n", "Q", "<nop>")
 
+-- split/join
+vim.keymap.set("n", "gs", "<cmd>lua require('treesj').toggle()<CR>")
+
 -- harpoon
 vim.keymap.set("n", "<leader>0", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>")
 vim.keymap.set("n", "<leader>`", "<cmd>lua require('harpoon.mark').add_file()<CR>")
