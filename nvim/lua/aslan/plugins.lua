@@ -14,6 +14,8 @@ return require('packer').startup(function(use)
 
     use("christoomey/vim-tmux-navigator")
 
+    use "shortcuts/no-neck-pain.nvim"
+
     -- navigation
     use 'nvim-lua/plenary.nvim'
     use { 'nvim-telescope/telescope-fzf-native.nvim', run =
@@ -24,6 +26,10 @@ return require('packer').startup(function(use)
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
     use 'ThePrimeagen/harpoon'
+    use {
+        "ggandor/leap.nvim",
+        config = function() require("leap").set_default_keymaps() end
+    }
 
     use "nvim-tree/nvim-web-devicons"
 
