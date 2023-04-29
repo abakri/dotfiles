@@ -6,5 +6,5 @@
 
 - link:
     ~/.config/nvim: nvim
-    ~/.inputrc: inputrc
     ~/.tmux.conf: tmux.conf
+    ~/.zshrc: zshrc
