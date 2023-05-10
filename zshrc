@@ -3,6 +3,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 alias vim="nvim"
 alias s="source ~/.zshrc"
 alias c="clear"
+alias lg="lazygit"
 
 function tmnew() {
     tmux new -s $1
