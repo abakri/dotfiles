@@ -11,4 +11,5 @@ tokyonight.setup({
 
 -- default theme!
 -- onedark.load()
-vim.cmd("colorscheme tokyonight")
+-- vim.cmd("colorscheme tokyonight")
+vim.cmd("colorscheme miramare")

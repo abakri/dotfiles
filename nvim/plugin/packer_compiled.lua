@@ -150,6 +150,11 @@ _G.packer_plugins = {
     path = "/Users/aslan/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  miramare = {
+    loaded = true,
+    path = "/Users/aslan/.local/share/nvim/site/pack/packer/start/miramare",
+    url = "https://github.com/franbach/miramare"
+  },
   ["nightfox.nvim"] = {
     loaded = true,
     path = "/Users/aslan/.local/share/nvim/site/pack/packer/start/nightfox.nvim",
