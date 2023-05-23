@@ -1,3 +1,5 @@
+#!/bin/bash
+
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 alias vim="nvim"
@@ -17,3 +19,5 @@ function tmattach() {
     tmux attach -t $1
 }
 
+# call local script if exists
+test -f ~/local.sh && source ~/local.sh && echo "local.sh sourced!"
