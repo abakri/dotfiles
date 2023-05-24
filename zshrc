@@ -10,7 +10,7 @@ alias s="source ~/.zshrc"
 alias c="clear"
 alias lg="lazygit"
 alias hg="history | grep"
-alias ls="echo -------------------------------- && pwd && echo -------------------------------- && ls -G -a -1"
+alias ls="echo -e '\033[1m$(pwd)\033[0m\n' && ls -G -a -1 && echo"
 
 function tmnew() {
     tmux new -s $1

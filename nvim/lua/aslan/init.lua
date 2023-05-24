@@ -66,6 +66,10 @@ vim.keymap.set("n", "<leader>y", "\"+y")
 vim.keymap.set("v", "<leader>y", "\"+y")
 vim.keymap.set("n", "<leader>Y", "\"+Y")
 
+-- resizing panes
+vim.keymap.set("n", "<C-w>h", "<C-w>5>")
+vim.keymap.set("n", "<C-w>l", "<C-w>5<")
+
 -- save hehe
 vim.keymap.set("n", "<C-s>", ":w<CR>")
 
@@ -94,11 +98,15 @@ vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true,
 -- lsp
 vim.keymap.set("n", "<leader>f", "<cmd>:lua vim.lsp.buf.format({ timeout_ms = 5000 })<CR>")
 vim.keymap.set("n", "<leader>.", "<cmd>:lua vim.lsp.buf.code_action()<CR>")
+vim.keymap.set("n", "<leader>e", "<cmd>:lua vim.diagnostic.open_float()<CR>")
 
 -- diffview
 vim.keymap.set("n", "<leader>dv", "<cmd>:DiffviewOpen<CR>")
 vim.keymap.set("n", "<leader><Esc>", "<cmd>:tabclose<CR>")
 
+-- Flutter
+vim.keymap.set("n", "<leader>Fr", "<cmd>:FlutterRun<CR>")
+vim.keymap.set("n", "<leader>Fo", "<cmd>:FlutterOutlineToggle<CR>")
 
 ---------------------------------------------------------------------
 --------------------------- AUTOCOMMANDS ----------------------------
@@ -106,7 +114,7 @@ vim.keymap.set("n", "<leader><Esc>", "<cmd>:tabclose<CR>")
 
 vim.api.nvim_create_autocmd(
     "FileType", {
-        pattern = { "javascript", "typescript", "typescriptreact", "javascriptreact" },
+        pattern = { "javascript", "typescript", "typescriptreact", "javascriptreact", "dart" },
         command = "setlocal ts=2 sts=2 sw=2 expandtab",
     }
 )
