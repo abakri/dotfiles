@@ -2,11 +2,19 @@
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
+# plugin stuff
+source /opt/homebrew/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+
+# binds
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
 # variables
 export GIT_EDITOR=nvim
 
 alias vim="nvim"
 alias s="source ~/.zshrc"
+alias erc="nvim ~/.zshrc"
 alias c="clear"
 alias lg="lazygit"
 alias hg="history | grep"

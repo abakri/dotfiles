@@ -18,7 +18,7 @@ require('lualine').setup({
     },
     tabline = {
         lualine_a = {},
-        lualine_b = {'filename'},
+        lualine_b = {{'filename', file_status=true, path=1}},
         lualine_c = {},
         lualine_x = {},
         lualine_y = {},
