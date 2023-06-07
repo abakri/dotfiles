@@ -88,7 +88,21 @@ return require('packer').startup(function(use)
         }
     })
 
+    -- dap (debugger)
+    use "theHamsta/nvim-dap-virtual-text"
+    use "rcarriga/nvim-dap-ui"
+    use "nvim-telescope/telescope-dap.nvim"
+    use {
+        "mfussenegger/nvim-dap",
+        requires = {
+            "nvim-telescope/telescope-dap.nvim",
+            "rcarriga/nvim-dap-ui",
+            "theHamsta/nvim-dap-virtual-text",
+        },
+    }
+
     -- Flutter
+    use "stevearc/dressing.nvim"
     use {
         "akinsho/flutter-tools.nvim",
         requires = {
@@ -125,6 +139,17 @@ return require('packer').startup(function(use)
             { 'L3MON4D3/LuaSnip' },             -- Required
             { 'rafamadriz/friendly-snippets' }, -- Optional
         }
+    }
+
+    -- docstrings
+    use {
+        "danymat/neogen",
+        config = function()
+            require('neogen').setup {}
+        end,
+        requires = "nvim-treesitter/nvim-treesitter",
+        -- Uncomment next line if you want to follow only stable versions
+        -- tag = "*"
     }
 
     -- Automatically set up your configuration after cloning packer.nvim

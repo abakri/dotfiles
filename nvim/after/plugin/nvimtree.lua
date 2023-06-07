@@ -8,5 +8,12 @@ require("nvim-tree").setup({
     view = {
         width = "40%",
         side = "left",
+    },
+    filters = {
+        dotfiles = false,
+    },
+    git = {
+        enable = true,
+        ignore = false,
     }
 })

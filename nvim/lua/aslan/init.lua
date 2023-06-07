@@ -86,6 +86,7 @@ vim.keymap.set("n", "<leader>1", "<cmd>lua require('harpoon.ui').nav_file(1)<CR>
 vim.keymap.set("n", "<leader>2", "<cmd>lua require('harpoon.ui').nav_file(2)<CR>")
 vim.keymap.set("n", "<leader>3", "<cmd>lua require('harpoon.ui').nav_file(3)<CR>")
 vim.keymap.set("n", "<leader>4", "<cmd>lua require('harpoon.ui').nav_file(4)<CR>")
+vim.keymap.set("n", "<leader>5", "<cmd>lua require('harpoon.ui').nav_file(5)<CR>")
 
 -- nvimtree
 -- vim.keymap.set("n", "<leader>e", vim.cmd.Ex) -- netrw disabled
@@ -108,7 +109,7 @@ vim.keymap.set("n", "<leader>dv", "<cmd>:DiffviewOpen<CR>")
 vim.keymap.set("n", "<leader><Esc>", "<cmd>:tabclose<CR>")
 
 -- Flutter
-vim.keymap.set("n", "<leader>Fr", "<cmd>:FlutterRun<CR>")
+vim.keymap.set("n", "<leader>Fr", "<cmd>:FlutterRun --flavor dev<CR>")
 vim.keymap.set("n", "<leader>Fo", "<cmd>:FlutterOutlineToggle<CR>")
 
 ---------------------------------------------------------------------

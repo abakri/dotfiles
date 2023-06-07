@@ -9,3 +9,5 @@
     ~/.tmux.conf: tmux.conf
     ~/.zshrc: zshrc
     ~/.iterm: iterm
+    ~/Library/Application Support/lazygit/config.yml: lazygitconfig.yml
+    ~/.gitconfig: gitconfig
