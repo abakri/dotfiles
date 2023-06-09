@@ -5,6 +5,11 @@ vim.keymap.set("n", "<leader>pf", builtin.find_files, {})
 vim.keymap.set("n", "<C-p>", builtin.builtin, {})
 vim.keymap.set("n", "<leader>pg", builtin.git_files, {})
 vim.keymap.set("n", "<leader>ps", builtin.live_grep, {})
+vim.keymap.set("n", "gr", builtin.lsp_references, {})
+vim.keymap.set("n", "gd", builtin.lsp_definitions, {})
+vim.keymap.set("n", "<leader>t", builtin.resume, {})
+vim.keymap.set("n", "<leader>gd", builtin.diagnostics, {})
+
 
 require("telescope").setup({
     pickers = {
@@ -28,14 +33,14 @@ require("telescope").setup({
         path_display = { truncate = 2 },
         mappings = {
             i = {
-                    ["<Esc>"] = actions.close,
-                    ["<C-n>"] = actions.cycle_history_next,
-                    ["<C-p>"] = actions.cycle_history_prev,
+                ["<Esc>"] = actions.close,
+                ["<C-n>"] = actions.cycle_history_next,
+                ["<C-p>"] = actions.cycle_history_prev,
             },
             n = {
-                    ["q"] = actions.close,
-                    ["<C-n>"] = actions.cycle_history_next,
-                    ["<C-p>"] = actions.cycle_history_prev,
+                ["q"] = actions.close,
+                ["<C-n>"] = actions.cycle_history_next,
+                ["<C-p>"] = actions.cycle_history_prev,
             }
         },
     },

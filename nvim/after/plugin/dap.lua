@@ -23,6 +23,9 @@ vim.fn.sign_define("DapBreakpoint", dap_breakpoint.error)
 vim.fn.sign_define("DapStopped", dap_breakpoint.stopped)
 vim.fn.sign_define("DapBreakpointRejected", dap_breakpoint.rejected)
 
+-- keymaps
+vim.keymap.set("n", "<leader>b", "<cmd>lua require('dap').toggle_breakpoint()<CR>")
+
 require("nvim-dap-virtual-text").setup {
     commented = true,
 }

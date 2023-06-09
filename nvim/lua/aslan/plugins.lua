@@ -27,6 +27,9 @@ return require('packer').startup(function(use)
 
     use("christoomey/vim-tmux-navigator")
 
+    -- indent lines
+    use "lukas-reineke/indent-blankline.nvim"
+
     use "shortcuts/no-neck-pain.nvim"
 
     -- navigation

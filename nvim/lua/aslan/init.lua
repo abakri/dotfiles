@@ -93,6 +93,9 @@ vim.keymap.set("n", "<leader>5", "<cmd>lua require('harpoon.ui').nav_file(5)<CR>
 vim.keymap.set("n", "<leader>e", "<cmd>:NvimTreeFindFile<CR>zz")
 vim.keymap.set("n", "<C-n>", "<cmd>:NvimTreeToggle<CR>")
 
+-- lazygit open in new window
+vim.keymap.set("n", "<leader>gg", ":!tmux new-window -c " .. vim.fn.getcwd() .. " -- lazygit <CR><CR>", { silent = true })
+
 -- github copilot
 vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 
