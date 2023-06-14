@@ -44,7 +44,11 @@ vim.keymap.set("i", "jk", "<Esc>")
 
 -- no more :W
 vim.keymap.set("n", "<leader>;", ":")
+vim.keymap.set("v", "<leader>;", ":")
 vim.keymap.set("n", ":", "<nop>") -- good bye muscle memory
+
+-- split pane
+vim.keymap.set("n", "<leader>c", "<cmd>:vsplit<CR>")
 
 -- move up and down half page puts cursor in middle
 vim.keymap.set("n", "<C-u>", "<C-u>zz")

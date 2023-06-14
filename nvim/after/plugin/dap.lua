@@ -1,6 +1,6 @@
 local dap_breakpoint = {
     error = {
-        text = "🟥",
+        text = "B",
         texthl = "LspDiagnosticsSignError",
         linehl = "",
         numhl = "",
@@ -12,7 +12,7 @@ local dap_breakpoint = {
         numhl = "",
     },
     stopped = {
-        text = "⭐️",
+        text = ">",
         texthl = "LspDiagnosticsSignInformation",
         linehl = "DiagnosticUnderlineInfo",
         numhl = "LspDiagnosticsSignInformation",
