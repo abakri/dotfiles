@@ -54,12 +54,16 @@ vim.keymap.set("n", "<leader>c", "<cmd>:vsplit<CR>")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 
+-- go back and forth history centers cursor
+vim.keymap.set("n", "<C-o>", "<C-o>zz")
+vim.keymap.set("n", "<C-i>", "<C-i>zz")
+
 -- moving lines up and down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- insert line below without entering insert mode
-vim.keymap.set("n","<C-j>", "o<Esc>")
+vim.keymap.set("n", "<C-j>", "o<Esc>")
 vim.keymap.set("n", "<C-k>", "O<Esc>")
 
 -- toggle absolute line numbers
