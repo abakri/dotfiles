@@ -2,6 +2,7 @@
 [user]
 	name = Aslan Bakri
     email = aslan.bakri@gmail.com
+	signingkey = 00D76213E9B65638
 
 [push]
     autoSetupRemote = true
@@ -25,3 +26,5 @@
 
 [diff]
     colorMoved = default
+[commit]
+	gpgsign = true

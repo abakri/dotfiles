@@ -12,6 +12,7 @@ bindkey '^[[B' history-substring-search-down
 
 # path
 export PATH=$PATH:/Users/aslan/.spicetify
+export PATH="$PATH:/Users/aslan/Library/Python/3.9/bin"
 
 alias vim="nvim"
 alias s="source ~/.zshrc"

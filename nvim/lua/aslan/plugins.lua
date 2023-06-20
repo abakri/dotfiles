@@ -58,6 +58,17 @@ return require('packer').startup(function(use)
         tag = "*", -- Use for stability; omit to use `main` branch for the latest features
     })
 
+    -- test runner
+    use {
+        "nvim-neotest/neotest",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+            "antoinemadec/FixCursorHold.nvim",
+            'sidlatau/neotest-dart',
+        },
+    }
+
     -- split/join
     use({
         'Wansmer/treesj',
