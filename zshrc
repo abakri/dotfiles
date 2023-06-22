@@ -1,12 +1,19 @@
 #!/bin/bash
+
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# plugin stuff
+# plugin settings
+function zvm_config() {
+  ZVM_VI_INSERT_ESCAPE_BINDKEY=jj
+  ZVM_VI_EDITOR=nvim
+}
+
+# plugin sources
 source /opt/homebrew/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
-#https://lineleap.atlassian.net/browse/PAY-64 binds
-
+# binds
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
@@ -41,6 +48,7 @@ function parse_git_branch() {
 }
 
 # git
+export GPG_TTY=\$(tty)
 export GIT_EDITOR="nvim"
 alias currbranch="git rev-parse --abbrev-ref HEAD"
 alias diffremote="git diff origin/$(currbranch)"
@@ -107,3 +115,4 @@ add-zsh-hook preexec pre_validation           # Adds the hook
 
 # call local script if exists
 test -f ~/local.sh && source ~/local.sh && echo "local.sh sourced!"
+
