@@ -43,8 +43,13 @@ return require('packer').startup(function(use)
     }
     use 'ThePrimeagen/harpoon'
     use {
-        "ggandor/leap.nvim",
-        config = function() require("leap").set_default_keymaps() end
+        "folke/flash.nvim",
+        requires = {
+            "nvim-treesitter/nvim-treesitter",
+        },
+        config = function()
+            require("flash").setup()
+        end,
     }
 
     use "nvim-tree/nvim-web-devicons"

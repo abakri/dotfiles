@@ -45,7 +45,6 @@ vim.keymap.set("i", "jk", "<Esc>")
 -- no more :W
 vim.keymap.set("n", "<leader>;", ":")
 vim.keymap.set("v", "<leader>;", ":")
-vim.keymap.set("n", ":", "<nop>") -- good bye muscle memory
 
 -- split pane
 vim.keymap.set("n", "<leader>c", "<cmd>:vsplit<CR>")
@@ -113,7 +112,12 @@ vim.keymap.set("n", "gr", "<cmd>:lua vim.lsp.buf.references()<CR>")
 vim.keymap.set("n", "<leader>f", "<cmd>:lua vim.lsp.buf.format({ timeout_ms = 5000 })<CR>")
 vim.keymap.set("n", "<leader>.", "<cmd>:lua vim.lsp.buf.code_action()<CR>")
 vim.keymap.set("v", "<leader>.", "<cmd>:lua vim.lsp.buf.range_code_action()<CR>")
-vim.keymap.set("n", "<leader>d", "<cmd>:lua vim.diagnostic.open_float()<CR>")
+vim.keymap.set("n", "<leader>d", "<cmd>:lua vim.diagnostic.open_float()<cr>")
+
+-- flash
+vim.keymap.set("n", "s", "<cmd>lua require('flash').jump()<CR>")
+vim.keymap.set("n", "S", "<cmd>lua require('flash').treesitter()<CR>")
+
 
 -- diffview
 vim.keymap.set("n", "<leader>dv", "<cmd>:DiffviewOpen<CR>")
