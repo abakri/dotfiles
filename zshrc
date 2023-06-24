@@ -48,7 +48,7 @@ function parse_git_branch() {
 }
 
 # git
-export GPG_TTY=\$(tty)
+export GPG_TTY=$(tty)
 export GIT_EDITOR="nvim"
 alias currbranch="git rev-parse --abbrev-ref HEAD"
 alias diffremote="git diff origin/$(currbranch)"

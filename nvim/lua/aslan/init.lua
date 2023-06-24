@@ -114,11 +114,6 @@ vim.keymap.set("n", "<leader>.", "<cmd>:lua vim.lsp.buf.code_action()<CR>")
 vim.keymap.set("v", "<leader>.", "<cmd>:lua vim.lsp.buf.range_code_action()<CR>")
 vim.keymap.set("n", "<leader>d", "<cmd>:lua vim.diagnostic.open_float()<cr>")
 
--- flash
-vim.keymap.set("n", "s", "<cmd>lua require('flash').jump()<CR>")
-vim.keymap.set("n", "S", "<cmd>lua require('flash').treesitter()<CR>")
-
-
 -- diffview
 vim.keymap.set("n", "<leader>dv", "<cmd>:DiffviewOpen<CR>")
 vim.keymap.set("n", "<leader><Esc>", "<cmd>:tabclose<CR>")

@@ -3,8 +3,6 @@
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
 
-local WIDTH_RATIO = 0.3  -- You can change this too
-
 -- empty setup using defaults
 require("nvim-tree").setup({
     disable_netrw = true,
@@ -12,10 +10,24 @@ require("nvim-tree").setup({
     respect_buf_cwd = true,
     sync_root_with_cwd = true,
     view = {
-        relativenumber = true,
-        width = function()
-            return math.floor(vim.opt.columns:get() * WIDTH_RATIO)
-        end,
+        centralize_selection = true,
+        adaptive_size = false,
+        side = "right",
+        preserve_window_proportions = true,
+        float = {
+            enable = true,
+            quit_on_focus_loss = false,
+            open_win_config = function()
+                return {
+                    row = 0,
+                    width = 40,
+                    border = "rounded",
+                    relative = "editor",
+                    col = vim.o.columns,
+                    height = vim.o.lines,
+                }
+            end,
+        },
     },
     filters = {
         dotfiles = false,

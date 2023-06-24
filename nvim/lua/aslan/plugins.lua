@@ -168,6 +168,16 @@ return require('packer').startup(function(use)
         }
     }
 
+    --[[ A bit too buggy for now
+    use {
+        "pmizio/typescript-tools.nvim",
+        requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+        config = function()
+            require("typescript-tools").setup {}
+        end,
+    }
+    --]]
+
     -- docstrings
     use {
         "danymat/neogen",
