@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# PRE-SETUP
+function zvm_config() {
+  ZVM_VI_INSERT_ESCAPE_BINDKEY=jj
+  ZVM_VI_EDITOR=nvim
+}
+
+# oh-my-zsh
+antigen use oh-my-zsh
+antigen bundle thefuck
+
+# INSTALL
+antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-history-substring-search
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+# CONSIDER?
+# antigen bundle jeffreytse/zsh-vi-mode
+
+# APPLY
+antigen apply
+
+eval $(thefuck --alias)
+
+# KEYBINDS
+bindkey '^[[A' history-substring-search-up
+bindkey '^P' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+bindkey '^N' history-substring-search-down
+# bindkey '^M' autosuggest-accept

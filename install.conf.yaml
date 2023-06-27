@@ -11,3 +11,5 @@
     ~/.iterm: iterm
     ~/Library/Application Support/lazygit/config.yml: lazygitconfig.yml
     ~/.gitconfig: gitconfig
+    ~/antigen.zsh: antigen.zsh
+    ~/.antigenrc: .antigenrc

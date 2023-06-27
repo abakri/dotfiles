@@ -2,20 +2,10 @@
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# plugin settings
-function zvm_config() {
-  ZVM_VI_INSERT_ESCAPE_BINDKEY=jj
-  ZVM_VI_EDITOR=nvim
-}
 
-# plugin sources
-source /opt/homebrew/share/zsh-history-substring-search/zsh-history-substring-search.zsh
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /opt/homebrew/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-
-# binds
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+# Load Antigen for plugins
+source "/Users/aslan/antigen.zsh"
+antigen init ~/.antigenrc
 
 # path
 export PATH=$PATH:/Users/aslan/.spicetify
@@ -67,6 +57,7 @@ function diffpatch() {
     echo "to patch, run:\n 'git apply ~/gitpatches/$uuid.patch'"
 }
 
+# REVEAL ALIAS ----------------------------------------------------------------------------
 COLOR_DEF=$'%f'
 COLOR_USR=$'%F{243}'
 COLOR_DIR=$'%F{197}'
@@ -112,6 +103,8 @@ pre_validation() {
 
 autoload -U add-zsh-hook                      # Load the zsh hook module. 
 add-zsh-hook preexec pre_validation           # Adds the hook
+
+# ----------------------------------------------------------------------------------------
 
 # call local script if exists
 test -f ~/local.sh && source ~/local.sh && echo "local.sh sourced!"
