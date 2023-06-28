@@ -2,7 +2,7 @@
 [user]
 	name = Aslan Bakri
     email = aslan.bakri@gmail.com
-	signingkey = BE1DFC6C2CD22B9CBACD2568A099B174CA113D33
+	signingkey = 6910D09D0DACA7C0ED42D4DD00D76213E9B65638
 
 [push]
     autoSetupRemote = true

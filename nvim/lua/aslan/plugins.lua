@@ -48,8 +48,25 @@ return require('packer').startup(function(use)
             "nvim-treesitter/nvim-treesitter",
         },
         config = function()
-            require("flash").setup()
-        end,
+            require('flash').setup({
+                -- disable 'f' and 't' with flash
+                modes = {
+                    char = {
+                        enabled = false,
+                    }
+                },
+                label = {
+                    format = function(opts)
+                        return {
+                            {
+                                "[" .. opts.match.label .. "]",
+                                opts.match.hl_group,
+                            }
+                        }
+                    end
+                }
+            })
+        end
     }
 
     use "nvim-tree/nvim-web-devicons"
@@ -177,7 +194,6 @@ return require('packer').startup(function(use)
         end,
     }
     --]]
-
     -- docstrings
     use {
         "danymat/neogen",
