@@ -1,5 +1,5 @@
 ---------------------------------------------------------------------
---------------------------- PREFACE ---------------------------------
+-------------------------- PREFACE ---------------------------------
 ---------------------------------------------------------------------
 
 -- set leader
@@ -53,7 +53,6 @@ vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
 vim.opt.clipboard = "unnamedplus"
-
 
 -- copilot
 vim.g.copilot_assume_mapped = true
@@ -114,23 +113,6 @@ vim.keymap.set("n", "<C-s>", ":w<CR>")
 -- disable Q
 vim.keymap.set("n", "Q", "<nop>")
 
--- split/join
-vim.keymap.set("n", "gs", "<cmd>lua require('treesj').toggle()<CR>")
-
--- harpoon
-vim.keymap.set("n", "<leader>0", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>")
-vim.keymap.set("n", "<leader>`", "<cmd>lua require('harpoon.mark').add_file()<CR>")
-vim.keymap.set("n", "<leader>1", "<cmd>lua require('harpoon.ui').nav_file(1)<CR>")
-vim.keymap.set("n", "<leader>2", "<cmd>lua require('harpoon.ui').nav_file(2)<CR>")
-vim.keymap.set("n", "<leader>3", "<cmd>lua require('harpoon.ui').nav_file(3)<CR>")
-vim.keymap.set("n", "<leader>4", "<cmd>lua require('harpoon.ui').nav_file(4)<CR>")
-vim.keymap.set("n", "<leader>5", "<cmd>lua require('harpoon.ui').nav_file(5)<CR>")
-
--- nvimtree
--- vim.keymap.set("n", "<leader>e", vim.cmd.Ex) -- netrw disabled
-vim.keymap.set("n", "<leader>e", "<cmd>:NvimTreeFindFile<CR>zz")
-vim.keymap.set("n", "<C-n>", "<cmd>:NvimTreeToggle<CR>")
-
 -- lazygit open in new window
 vim.keymap.set("n", "<leader>gg", ":!tmux new-window -c " .. vim.fn.getcwd() .. " -- lazygit <CR><CR>", { silent = true })
 
@@ -147,14 +129,6 @@ vim.keymap.set("n", "<leader>do", "<cmd>:lua vim.diagnostic.open_float()<cr>")
 vim.keymap.set("n", "<leader>d]", "<cmd>:lua vim.diagnostic.goto_prev()<cr>")
 vim.keymap.set("n", "<leader>d[", "<cmd>:lua vim.diagnostic.goto_next()<cr>")
 vim.keymap.set("n", "<leader>vr", "<cmd>:lua vim.lsp.buf.rename()<cr>")
-
--- diffview
-vim.keymap.set("n", "<leader>dv", "<cmd>:DiffviewOpen<CR>")
-vim.keymap.set("n", "<leader><Esc>", "<cmd>:tabclose<CR>")
-
--- Flutter
-vim.keymap.set("n", "<leader>Fr", "<cmd>:FlutterRun --flavor dev<CR>")
-vim.keymap.set("n", "<leader>Fo", "<cmd>:FlutterOutlineToggle<CR>")
 
 ---------------------------------------------------------------------
 --------------------------- AUTOCOMMANDS ----------------------------

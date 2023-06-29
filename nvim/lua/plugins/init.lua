@@ -1,7 +1,4 @@
 return {
-    -- vim tutorial
-    'ThePrimeagen/vim-be-good',
-
     -- color schemes
     "EdenEast/nightfox.nvim",
     "navarasu/onedark.nvim",
@@ -25,7 +22,6 @@ return {
     },
 
     -- navigation
-    'nvim-lua/plenary.nvim',
     {
         'nvim-telescope/telescope-fzf-native.nvim',
         build =
@@ -82,6 +78,15 @@ return {
 
     {
         'ThePrimeagen/harpoon',
+        keys = {
+            { '<leader>0', '<cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>', desc = 'Harpoon toggle quick menu' },
+            { '<leader>`', '<cmd>lua require("harpoon.mark").add_file()<CR>',        desc = 'Harpoon add file' },
+            { '<leader>1', '<cmd>lua require("harpoon.ui").nav_file(1)<CR>',         desc = 'Harpoon nav file 1' },
+            { '<leader>2', '<cmd>lua require("harpoon.ui").nav_file(2)<CR>',         desc = 'Harpoon nav file 2' },
+            { '<leader>3', '<cmd>lua require("harpoon.ui").nav_file(3)<CR>',         desc = 'Harpoon nav file 3' },
+            { '<leader>4', '<cmd>lua require("harpoon.ui").nav_file(4)<CR>',         desc = 'Harpoon nav file 4' },
+            { '<leader>5', '<cmd>lua require("harpoon.ui").nav_file(5)<CR>',         desc = 'Harpoon nav file 5' },
+        },
         config = {
             menu = {
                 width = math.floor(vim.api.nvim_win_get_width(0) * 0.65),
@@ -121,11 +126,11 @@ return {
     -- split/join
     {
         'Wansmer/treesj',
+        keys = {
+            { 'gs', '<cmd>lua require("treesj").toggle()<CR>', desc = 'Treesj toggle' },
+        },
         dependencies = { 'nvim-treesitter' },
     },
-
-    -- git
-    { 'sindrets/diffview.nvim', dependencies = 'nvim-lua/plenary.nvim' },
 
     -- status bar
     {
@@ -162,6 +167,10 @@ return {
             "nvim-tree/nvim-web-devicons", -- optional, for file icons
         },
         tag = "nightly",                   -- optional, updated every week. (see issue #1193)
+        keys = {
+            { '<leader>e', '<cmd>:NvimTreeFindFile<CR>zz', desc = 'NvimTreeFindFile' },
+            { '<C-n>',     '<cmd>:NvimTreeToggle<CR>',     desc = 'NvimTreeToggle' },
+        },
         config = {
             disable_netrw = true,
             hijack_netrw = true,
@@ -314,9 +323,13 @@ return {
     -- Flutter
     {
         "akinsho/flutter-tools.nvim",
+        lazy = false,
         dependencies = {
             "nvim-lua/plenary.nvim",
             "stevearc/dressing.nvim",
+        },
+        keys = {
+            { '<leader>Fr', '<cmd>:FlutterRun --flavor dev<CR>', desc = 'Flutter run' },
         },
         config = {
             fvm = true,
@@ -386,24 +399,23 @@ return {
     },
     {
         'VonHeikemen/lsp-zero.nvim',
-        branch = 'v1.x',
+        branch = 'v2.x',
         dependencies = {
             -- LSP Support
-            { 'neovim/nvim-lspconfig' },             -- Required
-            { 'williamboman/mason.nvim' },           -- Optional
+            { 'neovim/nvim-lspconfig' }, -- Required
+            {
+                -- Optional
+                'williamboman/mason.nvim',
+                build = function()
+                    vim.cmd('MasonUpdate')
+                end,
+            },
             { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
             -- Autocompletion
-            { 'hrsh7th/nvim-cmp' },         -- Required
-            { 'hrsh7th/cmp-nvim-lsp' },     -- Required
-            { 'hrsh7th/cmp-buffer' },       -- Optional
-            { 'hrsh7th/cmp-path' },         -- Optional
-            { 'saadparwaiz1/cmp_luasnip' }, -- Optional
-            { 'hrsh7th/cmp-nvim-lua' },     -- Optional
-
-            -- Snippets
-            { 'L3MON4D3/LuaSnip' },             -- Required
-            { 'rafamadriz/friendly-snippets' }, -- Optional
+            { 'hrsh7th/nvim-cmp' },     -- Required
+            { 'hrsh7th/cmp-nvim-lsp' }, -- Required
+            { 'L3MON4D3/LuaSnip' },     -- Required
         },
         config = function()
             local lsp = require('lsp-zero').preset({
@@ -456,6 +468,13 @@ return {
                     },
                 },
             })
+
+            lsp.on_attach(function(client, bufnr)
+                lsp.default_keymaps({ buffer = bufnr })
+            end)
+
+            -- (Optional) Configure lua language server for neovim
+            require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
 
             lsp.setup()
         end
