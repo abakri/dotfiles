@@ -6,31 +6,28 @@ return {
     {
         "franbach/miramare",
         priority = 1000,
-        config = function()
-            vim.cmd("colorscheme miramare")
-        end,
+        config = function() vim.cmd("colorscheme miramare") end,
     },
 
     -- indent lines
     {
         "lukas-reineke/indent-blankline.nvim",
-        config = {
+        opts = {
             char = "▏",
-            -- for example, context is off by default, use this to turn it on
             show_current_context = true,
         }
     },
 
     -- navigation
+    "christoomey/vim-tmux-navigator",
     {
         'nvim-telescope/telescope-fzf-native.nvim',
         build =
         'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
     },
-    "christoomey/vim-tmux-navigator",
     {
         "nvim-tree/nvim-web-devicons",
-        config = {
+        opts = {
             {
                 -- your personnal icons can go here (to override)
                 -- you can specify color or cterm_color instead of specifying both of them
@@ -87,7 +84,7 @@ return {
             { '<leader>4', '<cmd>lua require("harpoon.ui").nav_file(4)<CR>',         desc = 'Harpoon nav file 4' },
             { '<leader>5', '<cmd>lua require("harpoon.ui").nav_file(5)<CR>',         desc = 'Harpoon nav file 5' },
         },
-        config = {
+        opts = {
             menu = {
                 width = math.floor(vim.api.nvim_win_get_width(0) * 0.65),
             }
@@ -109,7 +106,7 @@ return {
         keys = {
             { 'leaderTr', '<cmd>lua require("neotest").run.run()<CR>',                    desc = 'Neotest run' },
             { 'leaderTd', '<cmd>lua require("neotest").run.run({strategy = "dap"})<CR>',  desc = 'Neotest run with dap' },
-            { 'leaderTf', '<cmd> lua require("neotest").run.run(vim.fn.expand("%"))<CR>', desc = 'Neotest run file' },
+            { 'leaderTf', '<cmd>lua require("neotest").run.run(vim.fn.expand("%"))<CR>', desc = 'Neotest run file' },
         },
         config = function()
             require('neotest').setup({
@@ -130,13 +127,16 @@ return {
             { 'gs', '<cmd>lua require("treesj").toggle()<CR>', desc = 'Treesj toggle' },
         },
         dependencies = { 'nvim-treesitter' },
+        config = function()
+            require('treesj').setup({})
+        end
     },
 
     -- status bar
     {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
-        config = {
+        opts = {
             options = {
                 component_separators = '|',
                 section_separators = { left = '', right = '' },
@@ -171,7 +171,7 @@ return {
             { '<leader>e', '<cmd>:NvimTreeFindFile<CR>zz', desc = 'NvimTreeFindFile' },
             { '<C-n>',     '<cmd>:NvimTreeToggle<CR>',     desc = 'NvimTreeToggle' },
         },
-        config = {
+        opts = {
             disable_netrw = true,
             hijack_netrw = true,
             respect_buf_cwd = true,
@@ -213,7 +213,7 @@ return {
             -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
             "MunifTanjim/nui.nvim",
         },
-        config = {
+        opts = {
             lsp = {
                 -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
                 override = {
@@ -236,7 +236,7 @@ return {
     -- dap (debugger)
     {
         "theHamsta/nvim-dap-virtual-text",
-        config = {
+        opts = {
             commented = true,
         }
     },
@@ -315,9 +315,7 @@ return {
     -- Markdown preview
     {
         "iamcco/markdown-preview.nvim",
-        build = "cd app && npm install",
-        setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
-        ft = { "markdown" },
+        build = function() vim.fn["mkdp#util#install"]() end,
     },
 
     -- Flutter
@@ -331,7 +329,7 @@ return {
         keys = {
             { '<leader>Fr', '<cmd>:FlutterRun --flavor dev<CR>', desc = 'Flutter run' },
         },
-        config = {
+        opts = {
             fvm = true,
             dev_tools = {
                 autostart = true,
@@ -352,7 +350,7 @@ return {
     {
         "nvim-treesitter/nvim-treesitter",
         build = ':TSUpdate',
-        config = {
+        opts = {
             -- A list of parser names, or "all" (the four listed parsers should always be installed)
             ensure_installed = { "javascript", "python", "typescript", "c", "lua", "bash", "toml", "json" },
 
@@ -379,7 +377,7 @@ return {
     },
     {
         'nvim-treesitter/nvim-treesitter-context',
-        config = {
+        opts = {
             enable = true,
             max_lines = 3,
         },
@@ -418,12 +416,7 @@ return {
             { 'L3MON4D3/LuaSnip' },     -- Required
         },
         config = function()
-            local lsp = require('lsp-zero').preset({
-                name = 'minimal',
-                set_lsp_keymaps = true,
-                manage_nvim_cmp = true,
-                suggest_lsp_servers = true,
-            })
+            local lsp = require('lsp-zero').preset({})
 
             lsp.ensure_installed({
                 "tsserver",

@@ -3,7 +3,7 @@ return {
     dependencies = {
         "nvim-treesitter/nvim-treesitter",
     },
-    config = {
+    opts = {
         -- disable 'f' and 't' with flash
         modes = {
             char = {
