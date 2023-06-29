@@ -58,7 +58,14 @@ vim.opt.clipboard = "unnamedplus"
 -- copilot
 vim.g.copilot_assume_mapped = true
 
-
+vim.diagnostic.config({
+    virtual_text = true,
+    signs = true,
+    update_in_insert = false,
+    underline = true,
+    severity_sort = false,
+    float = true,
+})
 ---------------------------------------------------------------------
 --------------------------- MAPPINGS --------------------------------
 ---------------------------------------------------------------------
@@ -159,3 +166,5 @@ vim.api.nvim_create_autocmd(
         command = "setlocal ts=2 sts=2 sw=2 expandtab",
     }
 )
+
+vim.cmd('colorscheme miramare')
