@@ -104,8 +104,8 @@ return {
             'sidlatau/neotest-dart',
         },
         keys = {
-            { 'leaderTr', '<cmd>lua require("neotest").run.run()<CR>',                    desc = 'Neotest run' },
-            { 'leaderTd', '<cmd>lua require("neotest").run.run({strategy = "dap"})<CR>',  desc = 'Neotest run with dap' },
+            { 'leaderTr', '<cmd>lua require("neotest").run.run()<CR>',                   desc = 'Neotest run' },
+            { 'leaderTd', '<cmd>lua require("neotest").run.run({strategy = "dap"})<CR>', desc = 'Neotest run with dap' },
             { 'leaderTf', '<cmd>lua require("neotest").run.run(vim.fn.expand("%"))<CR>', desc = 'Neotest run file' },
         },
         config = function()
@@ -462,7 +462,7 @@ return {
                 },
             })
 
-            lsp.on_attach(function(client, bufnr)
+            lsp.on_attach(function(_, bufnr)
                 lsp.default_keymaps({ buffer = bufnr })
             end)
 
@@ -470,6 +470,15 @@ return {
             require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
 
             lsp.setup()
+
+            -- Setup cmp
+            local cmp = require('cmp')
+            cmp.setup({
+                mapping = {
+                    -- `Enter` key to confirm completion
+                    ['<CR>'] = cmp.mapping.confirm({ select = false })
+                }
+            })
         end
     },
 }

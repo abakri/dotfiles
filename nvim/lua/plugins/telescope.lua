@@ -1,6 +1,6 @@
 return {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.1',
+    tag = '0.1.x',
     dependencies = { 'nvim-lua/plenary.nvim' },
     keys = {
         { '<leader>pf', '<cmd>lua require("telescope.builtin").find_files()<cr>', desc = "Telescope find files" },
