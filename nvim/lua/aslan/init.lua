@@ -112,7 +112,10 @@ vim.keymap.set("n", "gr", "<cmd>:lua vim.lsp.buf.references()<CR>")
 vim.keymap.set("n", "<leader>f", "<cmd>:lua vim.lsp.buf.format({ timeout_ms = 5000 })<CR>")
 vim.keymap.set("n", "<leader>.", "<cmd>:lua vim.lsp.buf.code_action()<CR>")
 vim.keymap.set("v", "<leader>.", "<cmd>:lua vim.lsp.buf.range_code_action()<CR>")
-vim.keymap.set("n", "<leader>d", "<cmd>:lua vim.diagnostic.open_float()<cr>")
+vim.keymap.set("n", "<leader>do", "<cmd>:lua vim.diagnostic.open_float()<cr>")
+vim.keymap.set("n", "<leader>d]", "<cmd>:lua vim.diagnostic.goto_prev()<cr>")
+vim.keymap.set("n", "<leader>d[", "<cmd>:lua vim.diagnostic.goto_next()<cr>")
+vim.keymap.set("n", "<leader>vr", "<cmd>:lua vim.lsp.buf.rename()<cr>")
 
 -- diffview
 vim.keymap.set("n", "<leader>dv", "<cmd>:DiffviewOpen<CR>")
