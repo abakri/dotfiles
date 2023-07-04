@@ -182,7 +182,7 @@ return {
                 side = "right",
                 preserve_window_proportions = true,
                 float = {
-                    enable = true,
+                    enable = false,
                     quit_on_focus_loss = false,
                     open_win_config = function()
                         return {
@@ -206,12 +206,21 @@ return {
         }
     },
 
-    -- noice cmd line (not using notifications)
+    -- cmd line and notifications
+    {
+        "rcarriga/nvim-notify",
+        config = function()
+            require('notify').setup({
+                stages = 'static',
+                render = 'minimal',
+            })
+        end
+    },
     {
         "folke/noice.nvim",
         dependencies = {
-            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
             "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
         },
         opts = {
             lsp = {
