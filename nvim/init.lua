@@ -27,7 +27,7 @@ require('lazy').setup('plugins')
 ---------------------------------------------------------------------
 --------------------------- OPTIONS ---------------------------------
 ---------------------------------------------------------------------
--- disable netrw at the very start of your init.lua (strongly advised)
+-- disable netrw at the very start of your init.lua for nvim-tree (strongly advised)
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
@@ -58,7 +58,7 @@ vim.opt.clipboard = "unnamedplus"
 vim.g.copilot_assume_mapped = true
 
 vim.diagnostic.config({
-    virtual_text = true,
+    virtual_text = false,
     signs = true,
     update_in_insert = false,
     underline = true,
@@ -96,7 +96,7 @@ vim.keymap.set("n", "<C-j>", "o<Esc>")
 vim.keymap.set("n", "<C-k>", "O<Esc>")
 
 -- toggle absolute line numbers
-vim.keymap.set("n", "<leader>l", ":set rnu!<CR>")
+vim.keymap.set("n", "<leader>ln", ":set rnu!<CR>")
 
 -- copy to system clipboard
 vim.keymap.set("n", "<leader>y", "\"+y")
