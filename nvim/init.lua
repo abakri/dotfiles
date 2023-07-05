@@ -111,6 +111,9 @@ vim.keymap.set("n", "<leader>gg", ":!tmux new-window -c " .. vim.fn.getcwd() .. 
 -- github copilot
 vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 
+-- buffers
+vim.keymap.set("n", "<leader>br", "<cmd>:bufdo e!<cr>") -- buffer reload
+
 -- lsp
 vim.keymap.set("n", "gd", "<cmd>:lua vim.lsp.buf.definition()<CR>")
 vim.keymap.set("n", "gr", "<cmd>:lua vim.lsp.buf.references()<CR>")
