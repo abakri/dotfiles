@@ -91,10 +91,6 @@ vim.keymap.set("n", "<C-i>", "<C-i>zz")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
--- insert line below without entering insert mode
-vim.keymap.set("n", "<C-j>", "o<Esc>")
-vim.keymap.set("n", "<C-k>", "O<Esc>")
-
 -- toggle absolute line numbers
 vim.keymap.set("n", "<leader>ln", ":set rnu!<CR>")
 
