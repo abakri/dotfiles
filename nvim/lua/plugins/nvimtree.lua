@@ -5,8 +5,8 @@ return {
     },
     tag = "nightly",                   -- optional, updated every week. (see issue #1193)
     keys = {
-        { '<leader>e', '<cmd>:NvimTreeFindFile<CR>zz', desc = 'NvimTreeFindFile' },
-        { '<C-n>',     '<cmd>:NvimTreeToggle<CR>',     desc = 'NvimTreeToggle' },
+        { '<leader>e', '<cmd>:NvimTreeFindFile<CR>zz',                                       desc = 'NvimTreeFindFile' },
+        { '<C-n>',     '<cmd>lua require("nvim-tree.api").tree.toggle({focus = false})<CR>', desc = 'NvimTreeToggle' },
     },
     opts = {
         update_focused_file = {
