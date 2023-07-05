@@ -48,6 +48,7 @@ return {
             require('notify').setup({
                 stages = 'static',
                 render = 'minimal',
+                top_down = false, -- put at bottom
             })
         end
     },
