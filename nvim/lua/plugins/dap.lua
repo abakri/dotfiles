@@ -6,7 +6,7 @@ return {
         "theHamsta/nvim-dap-virtual-text",
     },
     keys = {
-        { '<leader>b', '<cmd>lua require("dap").toggle_breakpoint()<CR>', desc = 'DAP toggle breakpoint' },
+        { '<leader>B', '<cmd>lua require("dap").toggle_breakpoint()<CR>', desc = 'DAP toggle breakpoint' },
     },
     config = function()
         local dap_breakpoint = {
