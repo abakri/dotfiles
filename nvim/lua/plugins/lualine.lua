@@ -9,8 +9,12 @@ return {
         sections = {
             lualine_a = { 'mode' },
             lualine_b = { 'branch' },
-            lualine_c = { { color = { bg = '#2B2426' } } },
-            lualine_x = { 'encoding', 'fileformat', 'filetype' },
+            lualine_c = {},
+            lualine_x = {
+                'encoding',
+                'fileformat',
+                'filetype',
+            },
             lualine_y = { 'progress' },
             lualine_z = { 'location' }
         },
