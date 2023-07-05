@@ -103,10 +103,6 @@ vim.keymap.set("n", "<leader>y", "\"+y")
 vim.keymap.set("v", "<leader>y", "\"+y")
 vim.keymap.set("n", "<leader>Y", "\"+Y")
 
--- resizing panes
-vim.keymap.set("n", "<C-w>h", "<C-w>5>")
-vim.keymap.set("n", "<C-w>l", "<C-w>5<")
-
 -- save hehe
 vim.keymap.set("n", "<C-s>", ":w<CR>")
 
