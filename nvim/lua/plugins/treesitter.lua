@@ -3,7 +3,7 @@ return {
     build = ':TSUpdate',
     opts = {
         -- A list of parser names, or "all" (the four listed parsers should always be installed)
-        ensure_installed = { "javascript", "python", "typescript", "c", "lua", "bash", "toml", "json" },
+        ensure_installed = { "javascript", "python", "typescript", "c", "lua", "bash", "toml", "json", "dart", "markdown", "markdown_inline"},
 
         -- Install parsers synchronously (only applied to `ensure_installed`)
         sync_install = false,
