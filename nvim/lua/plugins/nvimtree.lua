@@ -1,14 +1,20 @@
 return {
     "nvim-tree/nvim-tree.lua",
     dependencies = {
-        "nvim-tree/nvim-web-devicons",     -- optional, for file icons
+        "nvim-tree/nvim-web-devicons", -- optional, for file icons
     },
-    tag = "nightly",                       -- optional, updated every week. (see issue #1193)
+    tag = "nightly",                   -- optional, updated every week. (see issue #1193)
     keys = {
         { '<leader>e', '<cmd>:NvimTreeFindFile<CR>zz', desc = 'NvimTreeFindFile' },
         { '<C-n>',     '<cmd>:NvimTreeToggle<CR>',     desc = 'NvimTreeToggle' },
     },
     opts = {
+        update_focused_file = {
+            enable = true,
+        }, -- the current opened buffer should be focused in nvim tree
+        renderer = {
+            highlight_opened_files = "all",
+        },
         disable_netrw = true,
         hijack_netrw = true,
         respect_buf_cwd = true,
@@ -40,5 +46,5 @@ return {
             enable = true,
             ignore = false,
         }
-    }
+    },
 }
