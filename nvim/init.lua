@@ -128,7 +128,8 @@ vim.keymap.set("v", "<leader>.", "<cmd>:lua vim.lsp.buf.range_code_action()<CR>"
 vim.keymap.set("n", "<leader>do", "<cmd>:lua vim.diagnostic.open_float()<cr>")
 vim.keymap.set("n", "<leader>d]", "<cmd>:lua vim.diagnostic.goto_prev()<cr>")
 vim.keymap.set("n", "<leader>d[", "<cmd>:lua vim.diagnostic.goto_next()<cr>")
-vim.keymap.set("n", "<leader>vr", "<cmd>:lua vim.lsp.buf.rename()<cr>")
+
+vim.keymap.set("n", "<leader>rr", "<cmd>:lua vim.lsp.buf.rename()<cr>") -- rename symbol (rr = refactor rename)
 
 ---------------------------------------------------------------------
 --------------------------- AUTOCOMMANDS ----------------------------
