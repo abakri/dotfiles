@@ -5,7 +5,7 @@ return {
     "folke/tokyonight.nvim",
     {
         "franbach/miramare",
-        lazy=false,
+        lazy = false,
         config = function() vim.cmd("colorscheme miramare") end,
     },
 
