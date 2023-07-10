@@ -21,8 +21,8 @@ return {
         },
         { '<leader>t',  '<cmd>lua require("telescope.builtin").resume()<cr>',      desc = "Telescope resume" },
         { '<leader>gd', '<cmd>lua require("telescope.builtin").diagnostics()<cr>', desc = "Telescope diagnostics" },
-        { '<leader>bl', '<cmd>lua require("telescope.builtin").buffers()<cr>', desc = "Telescope open buffers" },
-        { '<leader>bp', '<cmd>lua require("telescope.builtin").oldfiles()<cr>', desc = "Telescope open old files" },
+        { '<leader>bl', '<cmd>lua require("telescope.builtin").buffers()<cr>',     desc = "Telescope open buffers" },
+        { '<leader>bp', '<cmd>lua require("telescope.builtin").oldfiles()<cr>',    desc = "Telescope open old files" },
     },
     config = function()
         local actions = require("telescope.actions")
@@ -56,6 +56,7 @@ return {
                         ["q"] = actions.close,
                         ["<C-n>"] = actions.cycle_history_next,
                         ["<C-p>"] = actions.cycle_history_prev,
+                        ["<C-a>"] = actions.add_selected_to_qflist,
                     }
                 },
             },

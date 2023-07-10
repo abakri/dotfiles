@@ -120,11 +120,13 @@ vim.keymap.set("n", "gr", "<cmd>:lua vim.lsp.buf.references()<CR>")
 vim.keymap.set("n", "<leader>f", "<cmd>:lua vim.lsp.buf.format({ timeout_ms = 5000 })<CR>")
 vim.keymap.set("n", "<leader>.", "<cmd>:lua vim.lsp.buf.code_action()<CR>")
 vim.keymap.set("v", "<leader>.", "<cmd>:lua vim.lsp.buf.range_code_action()<CR>")
+vim.keymap.set("n", "<leader>rr", "<cmd>:lua vim.lsp.buf.rename()<cr>") -- rename symbol (rr = refactor rename)
+
+-- diagnostics
 vim.keymap.set("n", "<leader>do", "<cmd>:lua vim.diagnostic.open_float()<cr>")
 vim.keymap.set("n", "<leader>d]", "<cmd>:lua vim.diagnostic.goto_prev()<cr>")
 vim.keymap.set("n", "<leader>d[", "<cmd>:lua vim.diagnostic.goto_next()<cr>")
 
-vim.keymap.set("n", "<leader>rr", "<cmd>:lua vim.lsp.buf.rename()<cr>") -- rename symbol (rr = refactor rename)
 
 ---------------------------------------------------------------------
 --------------------------- AUTOCOMMANDS ----------------------------
@@ -138,3 +140,25 @@ vim.api.nvim_create_autocmd(
 )
 
 vim.cmd('colorscheme miramare')
+
+---------------------------------------------------------------------
+--------------------------- MY FUNCTIONS ----------------------------
+---------------------------------------------------------------------
+
+-- toggle quickfix list
+local is_quickfix_list_open = false
+function ToggleQuickfixList()
+    if is_quickfix_list_open then
+        vim.cmd("cclose")
+        is_quickfix_list_open = false
+    else
+        vim.cmd("copen")
+        is_quickfix_list_open = true
+    end
+end
+
+vim.keymap.set("n", "<leader>qo", "<cmd>lua ToggleQuickfixList()<cr>")
+
+-- next and previous on quickfix
+vim.keymap.set("n", "<leader>qn", "<cmd>cnext<cr>")
+vim.keymap.set("n", "<leader>qp", "<cmd>cprev<cr>")
