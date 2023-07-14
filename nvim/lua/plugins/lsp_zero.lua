@@ -22,7 +22,6 @@ return {
         local lsp = require('lsp-zero').preset({})
 
         lsp.ensure_installed({
-            "tsserver",
             "rust_analyzer",
             "pyright",
             "jsonls",

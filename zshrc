@@ -32,6 +32,10 @@ function tmattach() {
     tmux attach -t $1
 }
 
+function tmbalance() {
+    tmux select-layout even-horizontal
+}
+
 # appearance
 function parse_git_branch() {
     git branch 2> /dev/null | sed -n -e 's/^\* \(.*\)/[\1]/p'

@@ -19,13 +19,18 @@ return {
         hijack_netrw = true,
         respect_buf_cwd = true,
         sync_root_with_cwd = true,
+        actions = {
+            open_file = {
+                resize_window = true,
+            }
+        },
         view = {
             centralize_selection = true,
-            adaptive_size = false,
+            adaptive_size = true,
             side = "right",
             preserve_window_proportions = true,
             float = {
-                enable = false,
+                enable = false, -- enable for floating window
                 quit_on_focus_loss = false,
                 open_win_config = function()
                     return {

@@ -22,8 +22,11 @@ return {
     {
         "almo7aya/openingh.nvim",
         keys = {
-            "gh", "<cmd>:OpenInGHFileLines<cr>", desc = "Open in GitHub",
+            "<leader>gh", "<cmd>:OpenInGHFileLines<cr>", desc = "Open in GitHub",
         },
+        config = function()
+            require('openingh').setup({})
+        end
     },
 
     -- surround
@@ -91,18 +94,10 @@ return {
         },
     },
 
-    -- extra hooks for lsp actions
+    -- LSP
     {
-        "jose-elias-alvarez/null-ls.nvim",
-        dependencies = { "nvim-lua/plenary.nvim" },
-        config = function()
-            local null_ls = require("null-ls")
-            null_ls.setup({
-                sources = {
-                    null_ls.builtins.formatting.black, -- python code formatting
-                    null_ls.builtins.formatting.isort, -- python import sorting
-                }
-            })
-        end
-    },
+        "pmizio/typescript-tools.nvim",
+        dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+        opts = {},
+    }
 }
