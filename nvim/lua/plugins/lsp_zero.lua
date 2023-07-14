@@ -25,6 +25,7 @@ return {
             "rust_analyzer",
             "pyright",
             "jsonls",
+            "tsserver",
         })
 
         lsp.configure("lua_ls", {

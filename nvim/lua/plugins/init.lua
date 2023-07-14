@@ -94,10 +94,11 @@ return {
         },
     },
 
-    -- LSP
+    --[[ uncomment when typescript-tools has a telescope plugin
     {
         "pmizio/typescript-tools.nvim",
         dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
         opts = {},
     }
+    --]]
 }
