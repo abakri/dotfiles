@@ -25,7 +25,6 @@ return {
             "rust_analyzer",
             "pyright",
             "jsonls",
-            "tsserver",
         })
 
         lsp.configure("lua_ls", {
@@ -63,6 +62,22 @@ return {
                     },
                 },
             },
+        })
+
+        lsp.configure("graphql", {})
+
+        lsp.configure("eslint", {
+            on_init = function(client)
+                client.diagnostics = false
+            end,
+            on_attach = function()
+                vim.keymap.set("n", "<leader>f", function()
+                    -- I don't think we need to format with prettier here
+                    --vim.lsp.buf.format({ timeout_ms = 5000 })
+                    vim.cmd("EslintFixAll")
+                    -- disable diagnostics since we are using typescript-tools
+                end)
+            end
         })
 
         lsp.on_attach(function(_, bufnr)

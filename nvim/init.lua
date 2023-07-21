@@ -118,11 +118,13 @@ vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true,
 
 -- buffers
 vim.keymap.set("n", "<leader>br", "<cmd>:bufdo e!<cr>") -- buffer reload
+vim.keymap.set("n", "<leader>bc", "<cmd>:bd|e#<cr>")    -- delete all buffers but current
 
 -- lsp
 vim.keymap.set("n", "gd", "<cmd>:lua vim.lsp.buf.definition()<CR>")
 vim.keymap.set("n", "gr", "<cmd>:lua vim.lsp.buf.references()<CR>")
 vim.keymap.set("n", "<leader>f", "<cmd>:lua vim.lsp.buf.format({ timeout_ms = 5000 })<CR>")
+vim.keymap.set("n", "<leader>h", "<cmd>:lua vim.lsp.buf.hover()<CR>")
 vim.keymap.set("n", "<leader>.", "<cmd>:lua vim.lsp.buf.code_action()<CR>")
 vim.keymap.set("v", "<leader>.", "<cmd>:lua vim.lsp.buf.range_code_action()<CR>")
 vim.keymap.set("n", "<leader>rr", "<cmd>:lua vim.lsp.buf.rename()<cr>") -- rename symbol (rr = refactor rename)
@@ -144,7 +146,11 @@ vim.api.nvim_create_autocmd(
     }
 )
 
+---------------------------------------------------------------------
+--------------------------- VISUALS ---------------------------------
+---------------------------------------------------------------------
 vim.cmd('colorscheme miramare')
+vim.cmd('hi SignColumn guibg=NONE') -- remove sign column background
 
 ---------------------------------------------------------------------
 --------------------------- MY FUNCTIONS ----------------------------

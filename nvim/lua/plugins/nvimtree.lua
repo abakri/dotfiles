@@ -25,24 +25,11 @@ return {
             }
         },
         view = {
+            width = 60,
+            relativenumber = true,
             centralize_selection = true,
-            adaptive_size = true,
             side = "right",
             preserve_window_proportions = true,
-            float = {
-                enable = false, -- enable for floating window
-                quit_on_focus_loss = false,
-                open_win_config = function()
-                    return {
-                        row = 0,
-                        width = 40,
-                        border = "rounded",
-                        relative = "editor",
-                        col = vim.o.columns,
-                        height = vim.o.lines,
-                    }
-                end,
-            },
         },
         filters = {
             dotfiles = false,

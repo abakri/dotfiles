@@ -21,6 +21,7 @@ return {
     -- github
     {
         "almo7aya/openingh.nvim",
+        lazy = false,
         keys = {
             "<leader>gh", "<cmd>:OpenInGHFileLines<cr>", desc = "Open in GitHub",
         },
@@ -93,12 +94,30 @@ return {
             max_lines = 3,
         },
     },
-
-    --[[ uncomment when typescript-tools has a telescope plugin
+    -- commenting
+    {
+        'echasnovski/mini.nvim',
+        version = false,
+        config = function()
+            require('mini.comment').setup()
+        end
+    },
     {
         "pmizio/typescript-tools.nvim",
         dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
         opts = {},
-    }
-    --]]
+    },
+
+    -- {
+    --     'jose-elias-alvarez/null-ls.nvim',
+    --     config = function()
+    --         local null_ls = require('null-ls')
+    --         null_ls.setup({
+    --             sources = {
+    --                 null_ls.builtins.formatting.prettierd,
+    --             }
+    --         })
+    --     end
+    --
+    -- },
 }
