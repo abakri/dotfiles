@@ -1,5 +1,3 @@
-local null_ls_enabled = false
-
 return {
     -- color schemes
     "EdenEast/nightfox.nvim",
@@ -30,13 +28,6 @@ return {
         config = function()
             require('openingh').setup({})
         end
-    },
-
-    -- surround
-    {
-        'echasnovski/mini.nvim',
-        version = false,
-        config = function() require('mini.surround').setup() end,
     },
 
     -- tmux integration
@@ -109,44 +100,12 @@ return {
         dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
         opts = {},
     },
+    -- renaming files no refactors imports
     {
-        'dmmulroy/tsc.nvim',
-        config = function()
-            require('tsc').setup({
-                flags = {
-                    build = true,
-                },
-            })
-        end
-    },
-    {
-        'jose-elias-alvarez/null-ls.nvim',
-        keys = {
-            {
-                '<leader>wd',
-                function()
-                    local null_ls = require('null-ls')
-                    if null_ls_enabled then
-                        null_ls.disable({ name = 'tsc' })
-                        print('null-ls disabled')
-                    else
-                        null_ls.enable({ name = 'tsc' })
-                        print('null-ls enabled')
-                    end
-                end,
-                desc = 'Toggle workspace diagnostics'
-            },
-        },
-        config = function()
-            local null_ls = require('null-ls')
-            null_ls.setup({
-                sources = {
-                    null_ls.builtins.diagnostics.tsc.with({
-                        multiple_files = true,
-                    }),
-                }
-            })
-            null_ls.disable({ name = 'tsc' })
-        end
-    },
+        'antosha417/nvim-lsp-file-operations',
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-tree.lua",
+        }
+    }
 }

@@ -8,9 +8,9 @@ return {
         'sidlatau/neotest-dart',
     },
     keys = {
-        { 'leaderTr', '<cmd>lua require("neotest").run.run()<CR>',                   desc = 'Neotest run' },
-        { 'leaderTd', '<cmd>lua require("neotest").run.run({strategy = "dap"})<CR>', desc = 'Neotest run with dap' },
-        { 'leaderTf', '<cmd>lua require("neotest").run.run(vim.fn.expand("%"))<CR>', desc = 'Neotest run file' },
+        { '<leader>Tr', '<cmd>lua require("neotest").run.run()<CR>',                   desc = 'Neotest run' },
+        { '<leader>Td', '<cmd>lua require("neotest").run.run({strategy = "dap"})<CR>', desc = 'Neotest run with dap' },
+        { '<leader>Tf', '<cmd>lua require("neotest").run.run(vim.fn.expand("%"))<CR>', desc = 'Neotest run file' },
     },
     config = function()
         require('neotest').setup({
@@ -23,7 +23,7 @@ return {
                     jestCommand = "npm test --",
                     jestConfigFile = "custom.jest.config.ts",
                     env = { CI = true },
-                    cwd = function(path)
+                    cwd = function(_)
                         return vim.fn.getcwd()
                     end,
                 }),
