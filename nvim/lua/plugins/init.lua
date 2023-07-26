@@ -1,3 +1,5 @@
+local null_ls_enabled = false
+
 return {
     -- color schemes
     "EdenEast/nightfox.nvim",
@@ -107,17 +109,44 @@ return {
         dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
         opts = {},
     },
-
-    -- {
-    --     'jose-elias-alvarez/null-ls.nvim',
-    --     config = function()
-    --         local null_ls = require('null-ls')
-    --         null_ls.setup({
-    --             sources = {
-    --                 null_ls.builtins.formatting.prettierd,
-    --             }
-    --         })
-    --     end
-    --
-    -- },
+    {
+        'dmmulroy/tsc.nvim',
+        config = function()
+            require('tsc').setup({
+                flags = {
+                    build = true,
+                },
+            })
+        end
+    },
+    {
+        'jose-elias-alvarez/null-ls.nvim',
+        keys = {
+            {
+                '<leader>wd',
+                function()
+                    local null_ls = require('null-ls')
+                    if null_ls_enabled then
+                        null_ls.disable({ name = 'tsc' })
+                        print('null-ls disabled')
+                    else
+                        null_ls.enable({ name = 'tsc' })
+                        print('null-ls enabled')
+                    end
+                end,
+                desc = 'Toggle workspace diagnostics'
+            },
+        },
+        config = function()
+            local null_ls = require('null-ls')
+            null_ls.setup({
+                sources = {
+                    null_ls.builtins.diagnostics.tsc.with({
+                        multiple_files = true,
+                    }),
+                }
+            })
+            null_ls.disable({ name = 'tsc' })
+        end
+    },
 }
