@@ -107,5 +107,15 @@ return {
             "nvim-lua/plenary.nvim",
             "nvim-tree/nvim-tree.lua",
         }
-    }
+    },
+    {
+        'dmmulroy/tsc.nvim',
+        keys = {
+            { '<leader>wd', '<cmd>TSC<CR>', desc = 'Run typescript project diagnostics' },
+        },
+        opts = {
+            auto_open_qflist = true,
+        },
+        config = function(_, opts) require('tsc').setup(opts) end,
+    },
 }
