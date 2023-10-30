@@ -1,3 +1,7 @@
+local function get_python_virtual_env_location()
+    return os.getenv("VIRTUAL_ENV")
+end
+
 return {
     "nvim-neotest/neotest",
     dependencies = {
@@ -6,11 +10,19 @@ return {
         "antoinemadec/FixCursorHold.nvim",
         'haydenmeade/neotest-jest',
         'sidlatau/neotest-dart',
+        "nvim-neotest/neotest-python",
     },
     keys = {
         { '<leader>Tr', '<cmd>lua require("neotest").run.run()<CR>',                   desc = 'Neotest run' },
         { '<leader>Td', '<cmd>lua require("neotest").run.run({strategy = "dap"})<CR>', desc = 'Neotest run with dap' },
         { '<leader>Tf', '<cmd>lua require("neotest").run.run(vim.fn.expand("%"))<CR>', desc = 'Neotest run file' },
+        {
+            '<leader>To',
+            '<cmd>lua require("neotest").output_panel.toggle()<CR>',
+            desc =
+            'Neotest toggle output panel'
+        },
+        { '<leader>Ts', '<cmd>lua require("neotest").summary.toggle()<CR>', desc = 'Neotest toggle summaray' },
     },
     config = function()
         require('neotest').setup({
@@ -26,6 +38,17 @@ return {
                     cwd = function(_)
                         return vim.fn.getcwd()
                     end,
+                }),
+                require("neotest-python")({
+                    dap = { justMyCode = false },
+                    runner = "pytest",
+                    args = {
+                        "--no-cov",
+                        "--tb=long",
+                        "-vv",
+                        "--capture=no",
+                    },
+                    python = string.format("%s/bin/python", get_python_virtual_env_location()),
                 }),
             }
         })

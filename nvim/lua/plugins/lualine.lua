@@ -5,13 +5,14 @@ return {
         options = {
             component_separators = '|',
             section_separators = { left = '', right = '' },
-            theme = {
-                normal = {
-                    a = { bg = "#2A2426" },
-                    b = { bg = "#2A2426" },
-                    c = { bg = "#2A2426" },
-                }
-            }
+            -- for miramare
+            -- theme = {
+            --     normal = {
+            --         a = { bg = "#2A2426" },
+            --         b = { bg = "#2A2426" },
+            --         c = { bg = "#2A2426" },
+            --     }
+            -- }
         },
         sections = {
             lualine_a = { 'mode' },

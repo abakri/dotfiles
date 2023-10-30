@@ -149,7 +149,7 @@ vim.api.nvim_create_autocmd(
 ---------------------------------------------------------------------
 --------------------------- VISUALS ---------------------------------
 ---------------------------------------------------------------------
-vim.cmd('colorscheme miramare')
+vim.cmd('colorscheme github_dark_dimmed')
 vim.cmd('hi SignColumn guibg=NONE') -- remove sign column background
 
 ---------------------------------------------------------------------

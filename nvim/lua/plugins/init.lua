@@ -1,21 +1,31 @@
 return {
     -- color schemes
     "EdenEast/nightfox.nvim",
-    "navarasu/onedark.nvim",
+    "franbach/miramare",
     "folke/tokyonight.nvim",
+    "navarasu/onedark.nvim",
+    'projekt0n/github-nvim-theme',
     {
-        "franbach/miramare",
+        "catppuccin/nvim",
+        name = "catppuccin",
         lazy = false,
-        config = function() vim.cmd("colorscheme miramare") end,
+        priority = 1000,
+        opts = {
+            flavour = "frappe"
+        },
     },
-
+    -- center buffer
+    "shortcuts/no-neck-pain.nvim",
     -- indent lines
     {
         "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
         opts = {
-            char = "▏",
-            show_current_context = true,
-        }
+            whitespace = {
+                remove_blankline_trail = true,
+            },
+            scope = { enabled = false },
+        },
     },
 
     -- github

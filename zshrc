@@ -4,16 +4,33 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 
 # Load Antigen for plugins
-source "/Users/aslan/antigen.zsh"
+source "$HOME/antigen.zsh"
 antigen init ~/.antigenrc
 
-# path
-export PATH=$PATH:/Users/aslan/.spicetify
-export PATH="$PATH:/Users/aslan/Library/Python/3.9/bin"
+# PATH
+export PATH=$PATH:$HOME/.spicetify
+export PATH="$PATH:$HOME/Library/Python/3.9/bin"
+export PATH="$HOME/.local/bin:$PATH"
 
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
+# The next line enables shell command completion for gcloud.
+if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
+
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# LANGUAGE SPECIFIC
+# - Python -
+export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/ 
+export GRPC_PYTHON_BUILD_SYSTEM_ZLIB=true
+
+# ALIAS
 alias vim="nvim"
 alias s="source ~/.zshrc"
 alias erc="nvim ~/.zshrc"
+alias elocal="nvim ~/local.sh"
 alias c="clear"
 alias lg="lazygit"
 alias hg="history | grep"
@@ -112,4 +129,5 @@ add-zsh-hook preexec pre_validation           # Adds the hook
 
 # call local script if exists
 test -f ~/local.sh && source ~/local.sh && echo "local.sh sourced!"
+
 

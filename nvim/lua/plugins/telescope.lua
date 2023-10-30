@@ -1,12 +1,12 @@
 return {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.x',
+    tag = '0.1.3',
     dependencies = { 'nvim-lua/plenary.nvim' },
     keys = {
         { '<leader>pf', '<cmd>lua require("telescope.builtin").find_files()<cr>', desc = "Telescope find files" },
         { '<C-p>',      '<cmd>lua require("telescope.builtin").builtin()<cr>',    desc = "Telescope built-in" },
         { '<leader>pg', '<cmd>lua require("telescope.builtin").git_files()<cr>',  desc = "Telescope git files" },
-        { '<leader>ps', '<cmd>lua require("telescope.builtin").live_grep()<cr>',  desc = "Telescope live grep" },
+        { '<leader>ps', '<cmd>lua require("telescope.builtin").live_grep()<cr>',  desc = "Telescope live greps" },
         {
             'gr',
             '<cmd>lua require("telescope.builtin").lsp_references()<cr>',
@@ -62,7 +62,6 @@ return {
             },
         })
         require("telescope").load_extension("fzf")
-        require("telescope").load_extension("flutter")
         require("telescope").load_extension("notify")
     end,
 }
