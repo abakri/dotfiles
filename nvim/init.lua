@@ -59,6 +59,7 @@ vim.opt.incsearch = true
 
 vim.opt.clipboard = "unnamedplus"
 
+
 -- copilot
 vim.g.copilot_assume_mapped = true
 
@@ -70,6 +71,9 @@ vim.diagnostic.config({
     severity_sort = false,
     float = true,
 })
+
+-- set cursorline
+vim.cmd("set cursorline")
 ---------------------------------------------------------------------
 --------------------------- MAPPINGS --------------------------------
 ---------------------------------------------------------------------
@@ -120,9 +124,12 @@ vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true,
 vim.keymap.set("n", "<leader>br", "<cmd>:bufdo e!<cr>") -- buffer reload
 vim.keymap.set("n", "<leader>bc", "<cmd>:bd|e#<cr>")    -- delete all buffers but current
 
+vim.keymap.set("n", "<leader>bf", "<cmd>:!echo -n % | pbcopy<cr>")
+
 -- lsp
 vim.keymap.set("n", "gd", "<cmd>:lua vim.lsp.buf.definition()<CR>")
-vim.keymap.set("n", "gr", "<cmd>:lua vim.lsp.buf.references()<CR>")
+-- Removed to use telescope
+-- vim.keymap.set("n", "gr", "<cmd>:lua vim.lsp.buf.references()<CR>")
 vim.keymap.set("n", "<leader>f", "<cmd>:lua vim.lsp.buf.format({ timeout_ms = 5000 })<CR>")
 vim.keymap.set("n", "<leader>h", "<cmd>:lua vim.lsp.buf.hover()<CR>")
 vim.keymap.set("n", "<leader>.", "<cmd>:lua vim.lsp.buf.code_action()<CR>")

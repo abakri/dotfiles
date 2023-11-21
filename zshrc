@@ -37,6 +37,16 @@ alias hg="history | grep"
 alias l="echo -e '\033[1m$(pwd)\033[0m\n' && ls -G -a -1 && echo"
 alias f="fzf"
 
+# scratch
+function scratch(){
+    if [ $# -eq 0 ]; then
+        echo "No filetype specified"
+        return
+    fi
+    local uuid=$(uuidgen)
+    nvim $HOME/scratch/$uuid.$1
+}
+
 function tmnew() {
     tmux new -s $1
 }
@@ -131,3 +141,7 @@ add-zsh-hook preexec pre_validation           # Adds the hook
 test -f ~/local.sh && source ~/local.sh && echo "local.sh sourced!"
 
 
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

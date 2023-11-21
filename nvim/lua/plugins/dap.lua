@@ -4,6 +4,7 @@ return {
         "nvim-telescope/telescope-dap.nvim",
         "rcarriga/nvim-dap-ui",
         "theHamsta/nvim-dap-virtual-text",
+        "mfussenegger/nvim-dap-python",
     },
     keys = {
         { '<leader>B', '<cmd>lua require("dap").toggle_breakpoint()<CR>', desc = 'DAP toggle breakpoint' },
@@ -47,23 +48,56 @@ return {
             dapui.close()
         end
 
-        dap.adapters.dart = {
-            type = "executable",
-            command = "/Users/aslan/opt/flutter/bin/flutter",
-            args = { "debug_adapter" }
-        }
+        dap.adapters.python = function(cb, config)
+            if config.request == 'attach' then
+                ---@diagnostic disable-next-line: undefined-field
+                local port = (config.connect or config).port
+                ---@diagnostic disable-next-line: undefined-field
+                local host = (config.connect or config).host or '127.0.0.1'
+                cb({
+                    type = 'server',
+                    port = assert(port, '`connect.port` is required for a python `attach` configuration'),
+                    host = host,
+                    options = {
+                        source_filetype = 'python',
+                    },
+                })
+            else
+                cb({
+                    type = 'executable',
+                    command = '/Users/aslanbakri/.virtualenvs/ledger/bin/python',
+                    args = { '-m', 'debugpy.adapter' },
+                    options = {
+                        source_filetype = 'python',
+                    },
+                })
+            end
+        end
 
-        dap.configurations = {
-            dart = {
-                type = "dart",
-                request = "launch",
-                name = "Launch Dart Program",
-                -- The nvim-dap plugin populates this variable with the filename of the current buffer
-                program = "${file}",
-                -- The nvim-dap plugin populates this variable with the editor's current working directory
-                cwd = "${workspaceFolder}",
-                args = { "--help" },     -- Note for Dart apps this is args, for Flutter apps toolArgs
-            }
+        dap.configurations.python = {
+            {
+                -- The first three options are required by nvim-dap
+                type = 'python'; -- the type here established the link to the adapter definition: `dap.adapters.python`
+                request = 'launch';
+                name = "Launch file";
+
+                -- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
+
+                program = "${file}"; -- This configuration will launch the current file if used.
+                pythonPath = function()
+                    -- debugpy supports launching an application with a different interpreter then the one used to launch debugpy itself.
+                    -- The code below looks for a `venv` or `.venv` folder in the current directly and uses the python within.
+                    -- You could adapt this - to for example use the `VIRTUAL_ENV` environment variable.
+                    local cwd = vim.fn.getcwd()
+                    if vim.fn.executable('$VIRTUAL_ENV/bin/python') == 1 then
+                        return '$VIRTUAL_ENV/bin/python'
+                    elseif vim.fn.executable(cwd .. '/.venv/bin/python') == 1 then
+                        return cwd .. '/.venv/bin/python'
+                    else
+                        return '$HOME/.pyenv/shims/python'
+                    end
+                end;
+            },
         }
     end
 }

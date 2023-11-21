@@ -128,4 +128,9 @@ return {
         },
         config = function(_, opts) require('tsc').setup(opts) end,
     },
+    {
+        "ecthelionvi/NeoComposer.nvim",
+        dependencies = { "kkharji/sqlite.lua" },
+        opts = {}
+    },
 }
