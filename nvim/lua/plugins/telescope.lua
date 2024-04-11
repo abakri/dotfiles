@@ -1,12 +1,40 @@
 return {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.3',
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    dependencies = {
+        'nvim-lua/plenary.nvim',
+        {
+            "nvim-telescope/telescope-live-grep-args.nvim",
+            -- This will not install any breaking changes.
+            -- For major updates, this must be adjusted manually.
+            version = "^1.0.0",
+        }
+    },
     keys = {
-        { '<leader>pf', '<cmd>lua require("telescope.builtin").find_files()<cr>', desc = "Telescope find files" },
-        { '<C-p>',      '<cmd>lua require("telescope.builtin").builtin()<cr>',    desc = "Telescope built-in" },
-        { '<leader>pg', '<cmd>lua require("telescope.builtin").git_files()<cr>',  desc = "Telescope git files" },
-        { '<leader>ps', '<cmd>lua require("telescope.builtin").live_grep()<cr>',  desc = "Telescope live greps" },
+        {
+            '<leader>pf',
+            '<cmd>lua require("telescope.builtin").find_files()<cr>',
+            desc =
+            "Telescope find files"
+        },
+        {
+            '<C-p>',
+            '<cmd>lua require("telescope.builtin").builtin()<cr>',
+            desc =
+            "Telescope built-in"
+        },
+        {
+            '<leader>pg',
+            '<cmd>lua require("telescope.builtin").git_files()<cr>',
+            desc =
+            "Telescope git files"
+        },
+        {
+            '<leader>ps',
+            '<cmd>lua require("telescope").extensions.live_grep_args.live_grep_args()<cr>',
+            desc =
+            "Telescope live grep with arguments"
+        },
         {
             'gr',
             '<cmd>lua require("telescope.builtin").lsp_references()<cr>',
@@ -64,5 +92,6 @@ return {
         require("telescope").load_extension("fzf")
         require("telescope").load_extension("notify")
         require('telescope').load_extension('macros')
+        require("telescope").load_extension("live_grep_args")
     end,
 }

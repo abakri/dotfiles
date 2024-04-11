@@ -114,6 +114,12 @@ vim.keymap.set("n", "<C-s>", ":w<CR>")
 -- disable Q
 vim.keymap.set("n", "Q", "<nop>")
 
+-- vsplit
+vim.keymap.set("n", "<leader>vs", ":vsplit<CR>")
+
+-- hack to get nvim tree to work (if its not loaded, then won't work)
+vim.keymap.set("n", '<C-n>', '<cmd>lua require("nvim-tree.api").tree.toggle({focus = false})<CR>')
+
 -- lazygit open in new window
 vim.keymap.set("n", "<leader>gg", ":!tmux new-window -c " .. vim.fn.getcwd() .. " -- lazygit <CR><CR>", { silent = true })
 
@@ -125,6 +131,9 @@ vim.keymap.set("n", "<leader>br", "<cmd>:bufdo e!<cr>") -- buffer reload
 vim.keymap.set("n", "<leader>bc", "<cmd>:bd|e#<cr>")    -- delete all buffers but current
 
 vim.keymap.set("n", "<leader>bf", "<cmd>:!echo -n % | pbcopy<cr>")
+
+-- easy word replace
+vim.keymap.set("n", "<leader>P", "viwP")
 
 -- lsp
 vim.keymap.set("n", "gd", "<cmd>:lua vim.lsp.buf.definition()<CR>")

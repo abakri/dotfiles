@@ -13,3 +13,6 @@
     ~/.gitconfig: gitconfig
     ~/antigen.zsh: antigen.zsh
     ~/.antigenrc: .antigenrc
+    ~/.config/atuin/config.toml: 
+      create: true
+      path: atuin/atuin.toml

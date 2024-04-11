@@ -30,14 +30,11 @@ return {
 
     -- github
     {
-        "almo7aya/openingh.nvim",
-        lazy = false,
-        keys = {
-            "<leader>gh", "<cmd>:OpenInGHFileLines<cr>", desc = "Open in GitHub",
-        },
-        config = function()
-            require('openingh').setup({})
-        end
+        "almo7aya/openingh.nvim", -- :OpenInGHFileLines
+    },
+    -- git blame
+    {
+        "FabijanZulj/blame.nvim", -- :ToggleBlame
     },
 
     -- tmux integration
@@ -84,10 +81,6 @@ return {
     },
     "rcarriga/nvim-dap-ui",
     "nvim-telescope/telescope-dap.nvim",
-    {
-        "iamcco/markdown-preview.nvim",
-        build = function() vim.fn["mkdp#util#install"]() end,
-    },
 
     -- context at top
     {
@@ -105,11 +98,17 @@ return {
             require('mini.comment').setup()
         end
     },
+    --[[ Seems unreliable
     {
         "pmizio/typescript-tools.nvim",
         dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-        opts = {},
+        opts = {
+            on_attach = function(client)
+                client.resolved_capabilities.document_formatting = false
+            end,
+        },
     },
+    --]]
     -- renaming files no refactors imports
     {
         'antosha417/nvim-lsp-file-operations',
@@ -133,4 +132,60 @@ return {
         dependencies = { "kkharji/sqlite.lua" },
         opts = {}
     },
+    {
+        'stevearc/aerial.nvim',
+        keys = {
+            { 'gA', '<cmd>AerialToggle! left<CR>', desc = 'Toggle Aerial' },
+        },
+        opts = {
+            min_width = 30,
+            max_width = { 50, 0.3 }
+        },
+        -- Optional dependencies
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-tree/nvim-web-devicons"
+        },
+    },
+    {
+        "tpope/vim-abolish",
+    },
+    {
+        "nvim-pack/nvim-spectre",
+        keys = {
+            { '<leader>S', '<cmd>lua require("spectre").toggle()<cr>', desc = 'Spectre Toggle' },
+        },
+    },
+    {
+        "b0o/incline.nvim",
+        lazy = false,
+        opts = {},
+    },
+    {
+        'stevearc/oil.nvim',
+        opts = {},
+        keys = {
+            { '<leader>O', '<cmd>Oil --float<cr>', desc = 'Open Oil' }
+        },
+        -- Optional dependencies
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+    },
+    {
+        'echasnovski/mini.files',
+        version = '*',
+        config = function()
+            require('mini.files').setup()
+        end,
+        keys = {
+            { '<leader>o', '<cmd>lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<cr>', desc = 'Open mini files' }
+        }
+    },
+    {
+        "ray-x/lsp_signature.nvim",
+        opts = {
+            hint_enable = false,
+            always_trigger = true,
+            floating_window_off_y = -2,
+        },
+    }
 }

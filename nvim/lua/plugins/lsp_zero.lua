@@ -10,6 +10,11 @@ return {
         { 'hrsh7th/nvim-cmp' },                  -- Required
         { 'hrsh7th/cmp-nvim-lsp' },              -- Required
         { 'L3MON4D3/LuaSnip' },                  -- Required
+        -- External signature
+        { 'ray-x/lsp_signature.nvim' },
+
+        -- Python indentation
+        { 'Vimjas/vim-python-pep8-indent' },
     },
     config = function()
         local lsp = require('lsp-zero').preset({})
@@ -18,6 +23,7 @@ return {
             "rust_analyzer",
             "pyright",
             "jsonls",
+            "tsserver",
         })
 
         lsp.configure("lua_ls", {
@@ -49,7 +55,7 @@ return {
                     analysis = {
                         autoImportCompletions = true,
                         diagnosticMode = "openFilesOnly",
-                        typeCheckingMode = "off",
+                        typeCheckingMode = "standard",
                         autoSearchPaths = true,
                         useLibraryCodeForTypes = true,
                     },
@@ -59,19 +65,7 @@ return {
 
         lsp.configure("graphql", {})
 
-        lsp.configure("eslint", {
-            on_init = function(client)
-                client.diagnostics = false
-            end,
-            on_attach = function()
-                vim.keymap.set("n", "<leader>f", function()
-                    -- I don't think we need to format with prettier here
-                    --vim.lsp.buf.format({ timeout_ms = 5000 })
-                    vim.cmd("EslintFixAll")
-                    -- disable diagnostics since we are using typescript-tools
-                end)
-            end
-        })
+        lsp.configure("tsserver", {})
 
         lsp.on_attach(function(_, bufnr)
             lsp.default_keymaps({ buffer = bufnr })

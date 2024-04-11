@@ -7,6 +7,9 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 source "$HOME/antigen.zsh"
 antigen init ~/.antigenrc
 
+# Zoxide init
+eval "$(zoxide init zsh)"
+
 # PATH
 export PATH=$PATH:$HOME/.spicetify
 export PATH="$PATH:$HOME/Library/Python/3.9/bin"
@@ -36,6 +39,46 @@ alias lg="lazygit"
 alias hg="history | grep"
 alias l="echo -e '\033[1m$(pwd)\033[0m\n' && ls -G -a -1 && echo"
 alias f="fzf"
+
+# Language specific aliases
+alias pptnocap="pytest --no-cov --tb=long -vv --show-capture=stdout"
+
+# copy fzf selection to clipboard
+function cpf(){
+    local selection=$(fzf)
+    echo "copying $selection"
+    echo -n $selection | pbcopy
+}
+
+# tmux-fzf session switch
+function tms(){ 
+    tmux switch -t $(tmux ls -F "#{session_name}" | fzf)
+}
+
+# git-fzf branch switch
+function gbs(){ 
+    git checkout $(git branch | fzf)
+}
+
+# pytest use ripgrep to find function and pipe to fzf to choose which test to run
+function pt(){
+    if [ $# -eq 0 ]; then
+        echo "No function specified"
+        return
+    fi
+    local regex=".*def (?P<func>.*$1.*)\(.*$"
+    local rgstring=$(rg $regex --replace ':$1' --glob='*test*.py')
+    local pytest_path=$(echo $rgstring | fzf --delimiter='::' --with-nth=2)
+    echo "Running test: $pytest_path"
+    pytest --no-cov --tb=long -vv --show-capture=stdout $pytest_path
+}
+
+# copy uuid
+function cpuuid(){
+    local uuid=`echo "$(uuidgen)" | tr '[:upper:]' '[:lower:]'`
+    echo "copying $uuid"
+    echo -n $uuid | pbcopy
+}
 
 # scratch
 function scratch(){
@@ -72,6 +115,7 @@ function parse_git_branch() {
 export GPG_TTY=$(tty)
 export GIT_EDITOR="nvim"
 alias currbranch="git rev-parse --abbrev-ref HEAD"
+alias cpbranch="echo -n $(currbranch) | pbcopy"
 alias diffremote="git diff origin/$(currbranch)"
 
 function init_git_config() {
@@ -145,3 +189,4 @@ test -f ~/local.sh && source ~/local.sh && echo "local.sh sourced!"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
