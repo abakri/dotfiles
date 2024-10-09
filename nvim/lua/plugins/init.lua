@@ -128,11 +128,6 @@ return {
         config = function(_, opts) require('tsc').setup(opts) end,
     },
     {
-        "ecthelionvi/NeoComposer.nvim",
-        dependencies = { "kkharji/sqlite.lua" },
-        opts = {}
-    },
-    {
         'stevearc/aerial.nvim',
         keys = {
             { 'gA', '<cmd>AerialToggle! left<CR>', desc = 'Toggle Aerial' },
@@ -180,12 +175,4 @@ return {
             { '<leader>o', '<cmd>lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<cr>', desc = 'Open mini files' }
         }
     },
-    {
-        "ray-x/lsp_signature.nvim",
-        opts = {
-            hint_enable = false,
-            always_trigger = true,
-            floating_window_off_y = -2,
-        },
-    }
 }

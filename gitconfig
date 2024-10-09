@@ -31,4 +31,7 @@
 	gpgsign = true
 
 [gpg]
-	program = gpg
+    program = gpg
+
+[alias]
+    find = log --pretty=\"format:%Cgreen%H %Cblue%s\" --name-status --grep

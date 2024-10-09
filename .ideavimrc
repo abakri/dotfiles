@@ -1,0 +1,37 @@
+set visualbell
+set noerrorbells
+set hlsearch
+
+let mapleader = " "
+
+imap jj <Esc>
+imap jk <Esc>
+
+nmap <leader>; :
+vmap <leader>; :
+
+nmap <C-u> <C-u>zz
+nmap <C-d> <C-d>zz
+
+nmap <C-o> <C-o>zz
+nmap <C-i> <C-i>zz
+
+vmap J :m '>+1<CR>gv=gv
+vmap K :m '<-2<CR>gv=gv
+
+nmap <leader>vs :vsplit<CR>
+
+nmap <leader>P viwP
+
+nmap <leader>pg :action SearchEverywhere<CR>
+nmap <leader>ps :action SearchEverywhere<CR>
+
+nmap <C-h> <C-w>h
+nmap <C-l> <C-w>l
+
+imap <C-n> :action ShowIntentionActions<CR>
+nmap <C-n> :action ShowIntentionActions<CR>
+
+nmap gr :action FindUsages<CR>
+
+nmap <leader>f :action ReformatCode<CR>

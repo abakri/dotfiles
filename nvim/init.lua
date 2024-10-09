@@ -112,7 +112,7 @@ vim.keymap.set("n", "<leader>Y", "\"+Y")
 vim.keymap.set("n", "<C-s>", ":w<CR>")
 
 -- disable Q
-vim.keymap.set("n", "Q", "<nop>")
+-- vim.keymap.set("n", "Q", "<nop>")
 
 -- vsplit
 vim.keymap.set("n", "<leader>vs", ":vsplit<CR>")
@@ -135,6 +135,10 @@ vim.keymap.set("n", "<leader>bf", "<cmd>:!echo -n % | pbcopy<cr>")
 -- easy word replace
 vim.keymap.set("n", "<leader>P", "viwP")
 
+-- switch file (see which one I use more)
+vim.keymap.set("n", "<C-f>", "<C-6>")
+vim.keymap.set("n", "<C-k>", "<C-6>")
+
 -- lsp
 vim.keymap.set("n", "gd", "<cmd>:lua vim.lsp.buf.definition()<CR>")
 -- Removed to use telescope
@@ -150,7 +154,6 @@ vim.keymap.set("n", "<leader>do", "<cmd>:lua vim.diagnostic.open_float()<cr>")
 vim.keymap.set("n", "<leader>d]", "<cmd>:lua vim.diagnostic.goto_prev()<cr>")
 vim.keymap.set("n", "<leader>d[", "<cmd>:lua vim.diagnostic.goto_next()<cr>")
 
-
 ---------------------------------------------------------------------
 --------------------------- AUTOCOMMANDS ----------------------------
 ---------------------------------------------------------------------
@@ -162,6 +165,36 @@ vim.api.nvim_create_autocmd(
     }
 )
 
+-- allow lua line to show recording macro status instantly
+vim.api.nvim_create_autocmd("RecordingEnter", {
+    callback = function()
+        require('lualine').refresh({
+            place = { "statusline" },
+        })
+    end,
+})
+
+vim.api.nvim_create_autocmd("RecordingLeave", {
+    callback = function()
+        -- This is going to seem really weird!
+        -- Instead of just calling refresh we need to wait a moment because of the nature of
+        -- `vim.fn.reg_recording`. If we tell lualine to refresh right now it actually will
+        -- still show a recording occuring because `vim.fn.reg_recording` hasn't emptied yet.
+        -- So what we need to do is wait a tiny amount of time (in this instance 50 ms) to
+        -- ensure `vim.fn.reg_recording` is purged before asking lualine to refresh.
+        local timer = vim.loop.new_timer()
+        timer:start(
+            50,
+            0,
+            vim.schedule_wrap(function()
+                require('lualine').refresh({
+                    place = { "statusline" },
+                })
+            end)
+        )
+    end,
+})
+
 ---------------------------------------------------------------------
 --------------------------- VISUALS ---------------------------------
 ---------------------------------------------------------------------
@@ -172,6 +205,14 @@ vim.cmd('hi SignColumn guibg=NONE') -- remove sign column background
 --------------------------- MY FUNCTIONS ----------------------------
 ---------------------------------------------------------------------
 
+-- reveal current buffer in finder
+vim.api.nvim_create_user_command('Rfinder',
+    function()
+        local path = vim.api.nvim_buf_get_name(0)
+        os.execute('open -R ' .. path)
+    end,
+    {}
+)
 -- toggle quickfix list
 local is_quickfix_list_open = false
 function ToggleQuickfixList()
@@ -185,7 +226,7 @@ function ToggleQuickfixList()
 end
 
 vim.keymap.set("n", "<leader>qo", "<cmd>lua ToggleQuickfixList()<cr>")
-
--- next and previous on quickfix
 vim.keymap.set("n", "<leader>qn", "<cmd>cnext<cr>")
 vim.keymap.set("n", "<leader>qp", "<cmd>cprev<cr>")
+
+

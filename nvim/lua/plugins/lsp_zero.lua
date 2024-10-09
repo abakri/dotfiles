@@ -24,6 +24,8 @@ return {
             "pyright",
             "jsonls",
             "tsserver",
+            "ruff_lsp",
+            -- "pylyzer",
         })
 
         lsp.configure("lua_ls", {
@@ -51,6 +53,7 @@ return {
 
         lsp.configure("pyright", {
             settings = {
+                pyright = { disableOrganizeImports = true },
                 python = {
                     analysis = {
                         autoImportCompletions = true,
@@ -58,10 +61,14 @@ return {
                         typeCheckingMode = "standard",
                         autoSearchPaths = true,
                         useLibraryCodeForTypes = true,
+                        -- ignore = { "*" },
                     },
                 },
             },
         })
+
+        lsp.configure("ruff_lsp", { settings = {} })
+        -- lsp.configure("pylyzer", {settings = {}})
 
         lsp.configure("graphql", {})
 

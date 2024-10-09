@@ -60,6 +60,11 @@ function gbs(){
     git checkout $(git branch | fzf)
 }
 
+# git-fzf branch delete
+function gbd(){ 
+    git branch -D $(git branch | fzf -m)
+}
+
 # pytest use ripgrep to find function and pipe to fzf to choose which test to run
 function pt(){
     if [ $# -eq 0 ]; then
@@ -70,7 +75,8 @@ function pt(){
     local rgstring=$(rg $regex --replace ':$1' --glob='*test*.py')
     local pytest_path=$(echo $rgstring | fzf --delimiter='::' --with-nth=2)
     echo "Running test: $pytest_path"
-    pytest --no-cov --tb=long -vv --show-capture=stdout $pytest_path
+    shift
+    pytest --no-cov --tb=long -vv --show-capture=stdout $pytest_path "$@"
 }
 
 # copy uuid

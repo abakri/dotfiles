@@ -7,6 +7,7 @@ return {
     dependencies = {
         "nvim-lua/plenary.nvim",
         "nvim-treesitter/nvim-treesitter",
+        "nvim-neotest/nvim-nio",
         "antoinemadec/FixCursorHold.nvim",
         'haydenmeade/neotest-jest',
         'sidlatau/neotest-dart',
@@ -21,6 +22,12 @@ return {
             '<cmd>lua require("neotest").output_panel.toggle()<CR>',
             desc =
             'Neotest toggle output panel'
+        },
+        {
+            '<leader>Tc',
+            '<cmd>lua require("neotest").output_panel.clear()<CR>',
+            desc =
+            'Neotest clear output panel'
         },
         { '<leader>Ts', '<cmd>lua require("neotest").summary.toggle()<CR>', desc = 'Neotest toggle summaray' },
     },
@@ -50,7 +57,11 @@ return {
                     },
                     python = string.format("%s/bin/python", get_python_virtual_env_location()),
                 }),
-            }
+            },
+            output_panel = {
+              enabled = true,
+              open = "botright split | resize 50"
+            },
         })
     end
 }
