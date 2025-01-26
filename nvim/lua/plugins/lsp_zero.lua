@@ -23,7 +23,7 @@ return {
             "rust_analyzer",
             "pyright",
             "jsonls",
-            "tsserver",
+            "ts_ls",
             "ruff_lsp",
             -- "pylyzer",
         })
@@ -52,6 +52,13 @@ return {
         })
 
         lsp.configure("pyright", {
+            capabilities = {
+                workspace = {
+                    didChangeConfiguration = {
+                        dynamicRegistration = false,
+                    },
+                },
+            },
             settings = {
                 pyright = { disableOrganizeImports = true },
                 python = {
@@ -68,11 +75,12 @@ return {
         })
 
         lsp.configure("ruff_lsp", { settings = {} })
-        -- lsp.configure("pylyzer", {settings = {}})
+
+        -- lsp.configure("pylyzer", {})
 
         lsp.configure("graphql", {})
 
-        lsp.configure("tsserver", {})
+        lsp.configure("ts_ls", {})
 
         lsp.on_attach(function(_, bufnr)
             lsp.default_keymaps({ buffer = bufnr })

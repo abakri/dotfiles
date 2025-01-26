@@ -35,3 +35,5 @@ nmap <C-n> :action ShowIntentionActions<CR>
 nmap gr :action FindUsages<CR>
 
 nmap <leader>f :action ReformatCode<CR>
+
+set clipboard+=unnamed

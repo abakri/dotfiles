@@ -39,7 +39,7 @@ return {
                     use_lsp = true           -- When set Flutter outline information is used when constructing test name.
                 }),
                 require('neotest-jest')({
-                    jestCommand = "npm test --",
+                    jestCommand = "yarn jest",
                     jestConfigFile = "custom.jest.config.ts",
                     env = { CI = true },
                     cwd = function(_)

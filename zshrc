@@ -134,6 +134,8 @@ function diffpatch() {
         return
     fi
     local uuid=$(uuidgen)
+    # make folder if not exists
+    mkdir -p ~/gitpatches
     git diff $1 > ~/gitpatches/$uuid.patch
     echo "to patch, run:\n 'git apply ~/gitpatches/$uuid.patch'"
 }
@@ -196,3 +198,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+alias pz='/Users/aslanbakri/workspace/devenv/devtools/pz'
+_pz_autocomplete() {
+    COMP_LINE="${BUFFER}"
+    COMP_POINT=$CURSOR
+    reply=($(COMP_LINE="$COMP_LINE" COMP_POINT="$COMP_POINT" pz))
+}
+compctl -K _pz_autocomplete pz
