@@ -4,7 +4,7 @@
 
 -- vscode neovim
 if (vim.g.vscode) then
-    require('vscode/init')
+    require('vscode-neovim/init')
     return
 end
 

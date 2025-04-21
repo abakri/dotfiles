@@ -12,3 +12,5 @@ vim.keymap.set("n", "<leader>2", ":call VSCodeNotify('workbench.action.openEdito
 vim.keymap.set("n", "<leader>3", ":call VSCodeNotify('workbench.action.openEditorAtIndex3')<CR>")
 vim.keymap.set("n", "<leader>4", ":call VSCodeNotify('workbench.action.openEditorAtIndex4')<CR>")
 vim.keymap.set("n", "<leader>5", ":call VSCodeNotify('workbench.action.openEditorAtIndex5')<CR>")
+vim.keymap.set("n", "<leader>;", ":")
+vim.keymap.set("v", "<leader>;", ":")
