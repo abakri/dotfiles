@@ -72,6 +72,9 @@ return {
         end
     },
 
+    -- mason (installer)
+    { "williamboman/mason.nvim" },
+
     -- dap add ons
     {
         "theHamsta/nvim-dap-virtual-text",
