@@ -1,6 +1,7 @@
 tap "homebrew/services"
 tap "jesseduffield/lazygit"
 brew "antigen"
+brew "node"
 brew "atuin"
 brew "fd"
 brew "fzf"
