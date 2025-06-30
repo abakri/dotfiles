@@ -239,7 +239,7 @@ require("mason").setup({
     }
 })
 
-vim.lsp.enable("ts_ls")
 vim.lsp.enable("ruff")
 vim.lsp.enable("pyright")
 vim.lsp.enable("lua_ls")
+vim.lsp.enable("vtsls")

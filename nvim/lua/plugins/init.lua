@@ -178,4 +178,10 @@ return {
             { '<leader>o', '<cmd>lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<cr>', desc = 'Open mini files' }
         }
     },
+    {
+       "m4xshen/hardtime.nvim",
+       lazy = false,
+       dependencies = { "MunifTanjim/nui.nvim" },
+       opts = {},
+    },
 }
