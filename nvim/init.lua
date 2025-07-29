@@ -116,6 +116,7 @@ vim.keymap.set("n", "<C-s>", ":w<CR>")
 
 -- vsplit
 vim.keymap.set("n", "<leader>vs", ":vsplit<CR>")
+vim.keymap.set("n", "<leader>hs", ":split<CR>")
 
 -- hack to get nvim tree to work (if its not loaded, then won't work)
 vim.keymap.set("n", '<C-n>', '<cmd>lua require("nvim-tree.api").tree.toggle({focus = false})<CR>')
@@ -134,10 +135,6 @@ vim.keymap.set("n", "<leader>bf", "<cmd>:!echo -n % | pbcopy<cr>")
 
 -- easy word replace
 vim.keymap.set("n", "<leader>P", "viwP")
-
--- switch file (see which one I use more)
-vim.keymap.set("n", "<C-f>", "<C-6>")
-vim.keymap.set("n", "<C-k>", "<C-6>")
 
 -- lsp
 vim.keymap.set("n", "gd", "<cmd>:lua vim.lsp.buf.definition()<CR>")
@@ -206,10 +203,19 @@ vim.cmd('hi SignColumn guibg=NONE') -- remove sign column background
 ---------------------------------------------------------------------
 
 -- reveal current buffer in finder
-vim.api.nvim_create_user_command('Rfinder',
+vim.api.nvim_create_user_command('OFinder',
     function()
         local path = vim.api.nvim_buf_get_name(0)
         os.execute('open -R ' .. path)
+    end,
+    {}
+)
+
+-- open current buffer in curosrj
+vim.api.nvim_create_user_command('OCursor',
+    function()
+        local path = vim.api.nvim_buf_get_name(0)
+        os.execute('open -a "/Applications/Cursor.app" ' .. path)
     end,
     {}
 )
@@ -228,6 +234,10 @@ end
 vim.keymap.set("n", "<leader>qo", "<cmd>lua ToggleQuickfixList()<cr>")
 vim.keymap.set("n", "<leader>qn", "<cmd>cnext<cr>")
 vim.keymap.set("n", "<leader>qp", "<cmd>cprev<cr>")
+
+-- open files in other programs
+vim.keymap.set("n", "<leader>foc", "<cmd>OCursor<cr>")
+vim.keymap.set("n", "<leader>fof", "<cmd>OFinder<cr>")
 
 require("mason").setup({
     ui = {

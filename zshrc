@@ -10,6 +10,9 @@ antigen init ~/.antigenrc
 # Zoxide init
 eval "$(zoxide init zsh)"
 
+# Fuck init
+eval $(thefuck --alias)
+
 # PATH
 export PATH=$PATH:$HOME/.spicetify
 export PATH="$PATH:$HOME/Library/Python/3.9/bin"
@@ -190,8 +193,7 @@ add-zsh-hook preexec pre_validation           # Adds the hook
 # ----------------------------------------------------------------------------------------
 
 # call local script if exists
-test -f ~/local.sh && source ~/local.sh && echo "local.sh sourced!"
-
+test -f ~/local.sh && source ~/local.sh
 
 
 export NVM_DIR="$HOME/.nvm"

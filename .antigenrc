@@ -18,7 +18,7 @@ antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle atuinsh/atuin@main
 
-# CONSIDER?
+# consider using vi mode? I've had bad experiences with it
 # antigen bundle jeffreytse/zsh-vi-mode
 
 # APPLY

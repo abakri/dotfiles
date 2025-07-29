@@ -10,6 +10,10 @@ vim.opt.clipboard = "unnamedplus"
 vim.keymap.set("i", "jj", "<Esc>")
 vim.keymap.set("i", "jk", "<Esc>")
 
+-- move up and down half page puts cursor in middle
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "<C-d>", "M<C-d>")
+
 -- grep and file search
 vim.keymap.set("n", "<leader>pg", ":call VSCodeNotify('workbench.action.quickOpen')<CR>")
 vim.keymap.set("n", "<leader>ps", ":call VSCodeNotify('workbench.action.findInFiles')<CR>")
