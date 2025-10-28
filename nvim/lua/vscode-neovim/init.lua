@@ -11,8 +11,8 @@ vim.keymap.set("i", "jj", "<Esc>")
 vim.keymap.set("i", "jk", "<Esc>")
 
 -- move up and down half page puts cursor in middle
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
-vim.keymap.set("n", "<C-d>", "M<C-d>")
+vim.keymap.set("n", "<C-u>", "27kzz")
+vim.keymap.set("n", "<C-d>", "27jzz")
 
 -- grep and file search
 vim.keymap.set("n", "<leader>pg", ":call VSCodeNotify('workbench.action.quickOpen')<CR>")

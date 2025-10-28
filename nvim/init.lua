@@ -39,6 +39,9 @@ vim.g.loaded_netrwPlugin = 1
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
 
+-- allow mouse scrolling
+vim.o.mouse = "a"
+
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
@@ -74,6 +77,15 @@ vim.diagnostic.config({
 
 -- set cursorline
 vim.cmd("set cursorline")
+
+local function get_visual_selection()
+  local esc = vim.api.nvim_replace_termcodes("<esc>", true, false, true)
+  vim.api.nvim_feedkeys(esc, "x", false)
+  local vstart = vim.fn.getpos("'<")
+  local vend = vim.fn.getpos("'>")
+  return table.concat(vim.fn.getregion(vstart, vend), "\n")
+end
+
 ---------------------------------------------------------------------
 --------------------------- MAPPINGS --------------------------------
 ---------------------------------------------------------------------
@@ -84,9 +96,6 @@ vim.keymap.set("i", "jk", "<Esc>")
 -- no more :W
 vim.keymap.set("n", "<leader>;", ":")
 vim.keymap.set("v", "<leader>;", ":")
-
--- split pane
-vim.keymap.set("n", "<leader>c", "<cmd>:vsplit<CR>")
 
 -- move up and down half page puts cursor in middle
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
@@ -147,9 +156,21 @@ vim.keymap.set("v", "<leader>.", "<cmd>:lua vim.lsp.buf.range_code_action()<CR>"
 vim.keymap.set("n", "<leader>rr", "<cmd>:lua vim.lsp.buf.rename()<cr>") -- rename symbol (rr = refactor rename)
 
 -- diagnostics
-vim.keymap.set("n", "<leader>do", "<cmd>:lua vim.diagnostic.open_float()<cr>")
+vim.keymap.set("n", "<leader>do", function() vim.diagnostic.open_float({ focusable = true }) end)
 vim.keymap.set("n", "<leader>d]", "<cmd>:lua vim.diagnostic.goto_prev()<cr>")
 vim.keymap.set("n", "<leader>d[", "<cmd>:lua vim.diagnostic.goto_next()<cr>")
+
+-- AI tools
+vim.keymap.set(
+    "v",
+    "<leader>ay",
+    function()
+        vim.cmd("y") -- yank selection first
+        local modified_yank = '@' .. vim.fn.expand('%') .. '\n\n' .. vim.fn.getreg('"')
+        vim.fn.setreg("", modified_yank) -- update default register
+        vim.fn.setreg("+", modified_yank) -- update clipboard
+    end
+)
 
 ---------------------------------------------------------------------
 --------------------------- AUTOCOMMANDS ----------------------------

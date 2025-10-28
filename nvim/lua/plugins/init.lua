@@ -38,15 +38,13 @@ return {
     },
 
     -- tmux integration
-    "christoomey/vim-tmux-navigator",
     {
-        'nvim-telescope/telescope-fzf-native.nvim',
-        build =
-        'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+        "christoomey/vim-tmux-navigator",
     },
+    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
 
-    -- copilot
-    "github/copilot.vim",
+    -- copilot # NOT USING ANYMORE
+    --"github/copilot.vim",
 
     -- split/join
     {

@@ -16,6 +16,9 @@ vim.lsp.config("vtsls", {
                 includeCompletionsForImportStatements = true,
                 importModuleSpecifier = "non-relative",
             },
+            tsserver = {
+                maxTsServerMemory = 4096, -- Increase memory limit for tsserver
+            }
         },
     },
 })

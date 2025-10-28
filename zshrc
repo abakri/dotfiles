@@ -17,6 +17,7 @@ eval $(thefuck --alias)
 export PATH=$PATH:$HOME/.spicetify
 export PATH="$PATH:$HOME/Library/Python/3.9/bin"
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
@@ -32,8 +33,12 @@ eval "$(pyenv init -)"
 export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/ 
 export GRPC_PYTHON_BUILD_SYSTEM_ZLIB=true
 
+# Default editor to be Neovim
+export EDITOR="nvim"
+
 # ALIAS
 alias vim="nvim"
+alias vi="nvim"
 alias s="source ~/.zshrc"
 alias erc="nvim ~/.zshrc"
 alias elocal="nvim ~/local.sh"
@@ -114,6 +119,11 @@ function tmattach() {
 function tmbalance() {
     tmux select-layout even-horizontal
 }
+
+# For cursor
+if test "$PAGER" = "head -n 10000 | cat"; then
+  export PAGER='head -n 10000'
+fi
 
 # appearance
 function parse_git_branch() {
@@ -207,3 +217,11 @@ _pz_autocomplete() {
     reply=($(COMP_LINE="$COMP_LINE" COMP_POINT="$COMP_POINT" pz))
 }
 compctl -K _pz_autocomplete pz
+
+# pnpm
+export PNPM_HOME="/Users/aslanbakri/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
