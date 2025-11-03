@@ -73,16 +73,6 @@ return {
     -- mason (installer)
     { "williamboman/mason.nvim" },
 
-    -- dap add ons
-    {
-        "theHamsta/nvim-dap-virtual-text",
-        opts = {
-            commented = true,
-        }
-    },
-    "rcarriga/nvim-dap-ui",
-    "nvim-telescope/telescope-dap.nvim",
-
     -- context at top
     {
         'nvim-treesitter/nvim-treesitter-context',
