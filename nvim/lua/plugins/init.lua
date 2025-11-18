@@ -37,7 +37,14 @@ return {
           {"<leader>t", "<cmd>FzfLua resume<cr>", desc = "Resume"},
           {"<leader>ps", "<cmd>FzfLua live_grep<cr>", desc = "Grep"}
       },
-      opts = {},
+      opts = {
+          winopts = {
+              preview = {
+                  vertical = "up:60%",
+                  layout = "vertical"
+              }
+          }
+      },
     },
 
     -- github
