@@ -27,6 +27,18 @@ return {
             scope = { enabled = false },
         },
     },
+    -- fzf-lua
+    {
+      "ibhagwan/fzf-lua",
+      -- optional for icon support
+      dependencies = { "nvim-tree/nvim-web-devicons" },
+      keys = {
+          {"<leader>pg", "<cmd>FzfLua files<cr>", desc = "Files"},
+          {"<leader>t", "<cmd>FzfLua resume<cr>", desc = "Resume"},
+          {"<leader>ps", "<cmd>FzfLua live_grep<cr>", desc = "Grep"}
+      },
+      opts = {},
+    },
 
     -- github
     {
@@ -41,7 +53,7 @@ return {
     {
         "christoomey/vim-tmux-navigator",
     },
-    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+    -- { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
 
     -- copilot # NOT USING ANYMORE
     --"github/copilot.vim",
@@ -143,11 +155,6 @@ return {
         },
     },
     {
-        "b0o/incline.nvim",
-        lazy = false,
-        opts = {},
-    },
-    {
         'stevearc/oil.nvim',
         opts = {},
         keys = {
@@ -167,9 +174,9 @@ return {
         }
     },
     {
-       "m4xshen/hardtime.nvim",
-       lazy = false,
-       dependencies = { "MunifTanjim/nui.nvim" },
-       opts = {},
+        "m4xshen/hardtime.nvim",
+        lazy = false,
+        dependencies = { "MunifTanjim/nui.nvim" },
+        opts = {},
     },
 }
