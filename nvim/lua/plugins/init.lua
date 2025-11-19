@@ -35,7 +35,8 @@ return {
       keys = {
           {"<leader>pg", "<cmd>FzfLua files<cr>", desc = "Files"},
           {"<leader>t", "<cmd>FzfLua resume<cr>", desc = "Resume"},
-          {"<leader>ps", "<cmd>FzfLua live_grep<cr>", desc = "Grep"}
+          {"<leader>ps", "<cmd>FzfLua live_grep<cr>", desc = "Grep"},
+          {"gr", "<cmd>FzfLua lsp_references<cr>", desc = "LSP References"},
       },
       opts = {
           winopts = {

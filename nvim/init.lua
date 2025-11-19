@@ -147,8 +147,8 @@ vim.keymap.set("n", "<leader>P", "viwP")
 
 -- lsp
 vim.keymap.set("n", "gd", "<cmd>:lua vim.lsp.buf.definition()<CR>")
--- Removed to use telescope
-vim.keymap.set("n", "gr", "<cmd>:lua vim.lsp.buf.references()<CR>")
+-- Commented out in favor of using Fzflua lsp_references
+-- vim.keymap.set("n", "gr", "<cmd>:lua vim.lsp.buf.references()<CR>")
 vim.keymap.set("n", "<leader>f", "<cmd>:lua vim.lsp.buf.format({ timeout_ms = 5000 })<CR>")
 vim.keymap.set("n", "<leader>h", "<cmd>:lua vim.lsp.buf.hover()<CR>")
 vim.keymap.set("n", "<leader>.", "<cmd>:lua vim.lsp.buf.code_action()<CR>")
