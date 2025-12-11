@@ -3,6 +3,15 @@
 # ideally, create a `~/personal` folder and clone this repo there
 # run installation
 cd ~/personal/dotfiles
+
+# Create local gitconfig if it doesn't exist
+if [ ! -f .gitconfig.local ]; then
+    echo "Creating .gitconfig.local from template..."
+    cp .gitconfig.local.template .gitconfig.local
+    echo "Please edit .gitconfig.local with your personal information (name, email, GPG key)"
+    read -p "Press enter to continue after editing .gitconfig.local..."
+fi
+
 ./install
 
 # install homebrew

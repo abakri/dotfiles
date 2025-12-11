@@ -1,8 +1,7 @@
 # This is Git's per-user configuration file.
-[user]
-	name = Aslan Bakri
-    email = aslan.bakri@gmail.com
-	signingkey = 923477099F54FAEB15B25EB413949FBEDB684B36
+# User-specific config is in ~/.gitconfig.local (not tracked in this repo)
+[include]
+	path = ~/.gitconfig.local
 
 [push]
     autoSetupRemote = true

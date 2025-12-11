@@ -73,7 +73,7 @@ function gbd(){
     git branch -D $(git branch | fzf -m)
 }
 
-# pytest use ripgrep to find function and pipe to fzf to choose which test to run
+# pytest
 function pt(){
     if [ $# -eq 0 ]; then
         echo "No function specified"
@@ -85,6 +85,110 @@ function pt(){
     echo "Running test: $pytest_path"
     shift
     pytest --no-cov --tb=long -vv --show-capture=stdout $pytest_path "$@"
+}
+
+# jest test search - interactive search through all tests
+function jts(){
+    # Search for all test/it/describe blocks
+    local regex="(test|it|describe)\(['\"].*['\"]"
+    local rgstring=$(rg $regex --glob='*.{test,spec}.{js,jsx,ts,tsx}' --no-heading --with-filename -o)
+
+    if [ -z "$rgstring" ]; then
+        echo "No tests found"
+        return
+    fi
+
+    # Let user select which test to run
+    local selection=$(echo $rgstring | fzf --delimiter=':' --with-nth=1,2)
+
+    if [ -z "$selection" ]; then
+        echo "No test selected"
+        return
+    fi
+
+    # Extract file path and test name
+    local file_path=$(echo $selection | cut -d':' -f1)
+    local test_line=$(echo $selection | cut -d':' -f2-)
+    # Extract test name from the matched line (between quotes)
+    local test_name=$(echo $test_line | sed -E "s/.*(test|it|describe)\(['\"](.*)['\"]/\2/")
+
+    echo "Running test: $test_name"
+    echo "File: $file_path"
+
+    # Find jest config (look for jest.config.js/ts in current dir or parent dirs)
+    local config_path=""
+    local search_dir="$PWD"
+    while [ "$search_dir" != "/" ]; do
+        if [ -f "$search_dir/jest.config.js" ]; then
+            config_path="$search_dir/jest.config.js"
+            break
+        elif [ -f "$search_dir/jest.config.ts" ]; then
+            config_path="$search_dir/jest.config.ts"
+            break
+        fi
+        search_dir=$(dirname "$search_dir")
+    done
+
+    # Build jest command
+    local jest_cmd="node_modules/.bin/jest '$file_path' -t '$test_name'"
+    if [ -n "$config_path" ]; then
+        jest_cmd="$jest_cmd -c '$config_path'"
+    fi
+
+    # Run jest with any additional arguments passed
+    eval "$jest_cmd $@"
+}
+
+# jest test - run first match automatically
+function jt(){
+    if [ $# -eq 0 ]; then
+        echo "No test pattern specified"
+        return
+    fi
+    # Search for test/it/describe blocks matching the pattern
+    local regex="(test|it|describe)\(['\"].*$1.*['\"]"
+    local rgstring=$(rg $regex --glob='*.{test,spec}.{js,jsx,ts,tsx}' --no-heading --with-filename -o)
+
+    if [ -z "$rgstring" ]; then
+        echo "No tests found matching pattern: $1"
+        return
+    fi
+
+    # Take the first match
+    local selection=$(echo $rgstring | head -n 1)
+
+    # Extract file path and test name
+    local file_path=$(echo $selection | cut -d':' -f1)
+    local test_line=$(echo $selection | cut -d':' -f2-)
+    # Extract test name from the matched line (between quotes)
+    local test_name=$(echo $test_line | sed -E "s/.*(test|it|describe)\(['\"](.*)['\"]/\2/")
+
+    echo "Running test: $test_name"
+    echo "File: $file_path"
+
+    # Find jest config (look for jest.config.js/ts in current dir or parent dirs)
+    local config_path=""
+    local search_dir="$PWD"
+    while [ "$search_dir" != "/" ]; do
+        if [ -f "$search_dir/jest.config.js" ]; then
+            config_path="$search_dir/jest.config.js"
+            break
+        elif [ -f "$search_dir/jest.config.ts" ]; then
+            config_path="$search_dir/jest.config.ts"
+            break
+        fi
+        search_dir=$(dirname "$search_dir")
+    done
+
+    # Build jest command
+    local jest_cmd="node_modules/.bin/jest '$file_path' -t '$test_name'"
+    if [ -n "$config_path" ]; then
+        jest_cmd="$jest_cmd -c '$config_path'"
+    fi
+
+    shift
+    # Run jest with any additional arguments passed
+    eval "$jest_cmd $@"
 }
 
 # copy uuid

@@ -29,28 +29,31 @@ return {
     },
     -- fzf-lua
     {
-      "ibhagwan/fzf-lua",
-      -- optional for icon support
-      dependencies = { "nvim-tree/nvim-web-devicons" },
-      keys = {
-          {"<leader>pg", "<cmd>FzfLua files<cr>", desc = "Files"},
-          {"<leader>t", "<cmd>FzfLua resume<cr>", desc = "Resume"},
-          {"<leader>ps", "<cmd>FzfLua live_grep<cr>", desc = "Grep"},
-          {"gr", "<cmd>FzfLua lsp_references<cr>", desc = "LSP References"},
-      },
-      opts = {
-          winopts = {
-              preview = {
-                  vertical = "up:60%",
-                  layout = "vertical"
-              }
-          }
-      },
+        "ibhagwan/fzf-lua",
+        -- optional for icon support
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        keys = {
+            { "<leader>pg", "<cmd>FzfLua files<cr>",          desc = "Files" },
+            { "<leader>t",  "<cmd>FzfLua resume<cr>",         desc = "Resume" },
+            { "<leader>ps", "<cmd>FzfLua live_grep<cr>",      desc = "Grep" },
+            { "gr",         "<cmd>FzfLua lsp_references<cr>", desc = "LSP References" },
+        },
+        opts = {
+            winopts = {
+                preview = {
+                    vertical = "up:60%",
+                    layout = "vertical"
+                }
+            }
+        },
     },
 
     -- github
     {
         "almo7aya/openingh.nvim", -- :OpenInGHFileLines
+        keys = {
+            { "gh",         "<cmd>OpenInGHFileLines<cr>", desc = "Open in Github" },
+        },
     },
     -- git blame
     {

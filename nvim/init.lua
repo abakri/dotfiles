@@ -276,4 +276,5 @@ vim.lsp.enable({
     "basedpyright",
     "lua_ls",
     "vtsls",
+    "gopls",
 })

@@ -1,0 +1,7 @@
+# Copy this file to .gitconfig.local and update with your personal information
+# cp .gitconfig.local.template .gitconfig.local
+
+[user]
+	name = Your Name
+	email = your.email@example.com
+	signingkey = YOUR_GPG_KEY_ID

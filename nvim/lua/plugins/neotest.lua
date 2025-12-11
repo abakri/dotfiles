@@ -9,8 +9,7 @@ return {
         "nvim-treesitter/nvim-treesitter",
         "nvim-neotest/nvim-nio",
         "antoinemadec/FixCursorHold.nvim",
-        'haydenmeade/neotest-jest',
-        'sidlatau/neotest-dart',
+        'nvim-neotest/neotest-jest',
         "nvim-neotest/neotest-python",
     },
     keys = {
@@ -34,10 +33,6 @@ return {
     config = function()
         require('neotest').setup({
             adapters = {
-                require('neotest-dart')({
-                    command = 'fvm flutter', -- Command being used to run tests. Defaults to `flutter`
-                    use_lsp = true           -- When set Flutter outline information is used when constructing test name.
-                }),
                 require('neotest-jest')({
                     jestCommand = "yarn jest",
                     jestConfigFile = "custom.jest.config.ts",
@@ -45,6 +40,7 @@ return {
                     cwd = function(_)
                         return vim.fn.getcwd()
                     end,
+                    isTestFile = require("neotest-jest.jest-util").defaultIsTestFile,
                 }),
                 require("neotest-python")({
                     dap = { justMyCode = false },
