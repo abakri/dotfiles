@@ -2,16 +2,12 @@
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-
 # Load Antigen for plugins
 source "$HOME/antigen.zsh"
-antigen init ~/.antigenrc
+antigen init ~/.antigenrc &>/dev/null
 
 # Zoxide init
 eval "$(zoxide init zsh)"
-
-# Fuck init
-eval $(thefuck --alias)
 
 # PATH
 export PATH=$PATH:$HOME/.spicetify
