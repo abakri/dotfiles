@@ -25,10 +25,5 @@ antigen bundle atuinsh/atuin@main
 antigen apply
 
 # KEYBINDS
-# bindkey '^[[A' history-substring-search-up
-# bindkey '^P' history-substring-search-up
 bindkey '^P' _atuin_search_widget
 bindkey '^r' _atuin_search_widget
-# bindkey '^[[B' history-substring-search-down
-# bindkey '^N' history-substring-search-down
-# bindkey '^M' autosuggest-accept
