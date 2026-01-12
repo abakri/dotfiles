@@ -44,6 +44,9 @@ return {
                     vertical = "up:60%",
                     layout = "vertical"
                 }
+            },
+            grep = {
+                rg_glob = true
             }
         },
     },
