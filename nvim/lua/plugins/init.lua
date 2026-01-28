@@ -97,7 +97,10 @@ return {
     },
 
     -- mason (installer)
-    { "williamboman/mason.nvim" },
+    {
+        "mason-org/mason.nvim",
+        opts = {}
+    },
 
     -- context at top
     {

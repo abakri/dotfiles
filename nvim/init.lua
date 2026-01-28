@@ -277,4 +277,5 @@ vim.lsp.enable({
     "lua_ls",
     "vtsls",
     "gopls",
+    "jsonls",
 })

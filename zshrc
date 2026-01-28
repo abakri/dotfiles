@@ -15,6 +15,11 @@ export PATH="$PATH:$HOME/Library/Python/3.9/bin"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# OPENSSL
+export LDFLAGS="-L/opt/homebrew/opt/openssl/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/openssl/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl/lib/pkgconfig"
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
 # The next line enables shell command completion for gcloud.
@@ -26,7 +31,7 @@ eval "$(pyenv init -)"
 
 # LANGUAGE SPECIFIC
 # - Python -
-export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/ 
+export LIBRARY_PATH="/opt/homebrew/opt/openssl/lib/"
 export GRPC_PYTHON_BUILD_SYSTEM_ZLIB=true
 
 # Default editor to be Neovim
