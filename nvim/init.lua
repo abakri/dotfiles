@@ -278,4 +278,5 @@ vim.lsp.enable({
     "vtsls",
     "gopls",
     "jsonls",
+    "glsl_analyzer",
 })
