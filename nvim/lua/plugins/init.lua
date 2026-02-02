@@ -67,11 +67,6 @@ return {
     {
         "christoomey/vim-tmux-navigator",
     },
-    -- { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-
-    -- copilot # NOT USING ANYMORE
-    --"github/copilot.vim",
-
     -- split/join
     {
         'Wansmer/treesj',

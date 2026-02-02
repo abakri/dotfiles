@@ -62,10 +62,6 @@ vim.opt.incsearch = true
 
 vim.opt.clipboard = "unnamedplus"
 
-
--- copilot
-vim.g.copilot_assume_mapped = true
-
 vim.diagnostic.config({
     virtual_text = false,
     signs = true,
@@ -132,9 +128,6 @@ vim.keymap.set("n", '<C-n>', '<cmd>lua require("nvim-tree.api").tree.toggle({foc
 
 -- lazygit open in new window
 vim.keymap.set("n", "<leader>gg", ":!tmux new-window -c " .. vim.fn.getcwd() .. " -- lazygit <CR><CR>", { silent = true })
-
--- github copilot
-vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 
 -- buffers
 vim.keymap.set("n", "<leader>br", "<cmd>:bufdo e!<cr>") -- buffer reload
