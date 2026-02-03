@@ -14,6 +14,10 @@ export PATH=$PATH:$HOME/.spicetify
 export PATH="$PATH:$HOME/Library/Python/3.9/bin"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.personal_scripts:$PATH"
+
+# PYTHONPATH for custom modules
+export PYTHONPATH="$HOME/python_scripts:$PYTHONPATH"
 
 # OPENSSL
 export LDFLAGS="-L/opt/homebrew/opt/openssl/lib"
@@ -38,6 +42,7 @@ export GRPC_PYTHON_BUILD_SYSTEM_ZLIB=true
 export EDITOR="nvim"
 
 # ALIAS
+alias rn="mv"
 alias vim="nvim"
 alias vi="nvim"
 alias s="source ~/.zshrc"

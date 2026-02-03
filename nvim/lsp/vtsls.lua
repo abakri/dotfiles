@@ -1,4 +1,4 @@
-vim.lsp.config("vtsls", {
+return {
     cmd = { "vtsls", "--stdio" },
     filetypes = {
         "javascript",
@@ -21,4 +21,4 @@ vim.lsp.config("vtsls", {
             }
         },
     },
-})
+}

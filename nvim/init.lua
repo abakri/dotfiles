@@ -1,4 +1,4 @@
----------------------------------------------------------------------
+--------------------------------------------------------------------
 -------------------------- PREFACE ---------------------------------
 ---------------------------------------------------------------------
 
@@ -253,6 +253,9 @@ vim.keymap.set("n", "<leader>qp", "<cmd>cprev<cr>")
 vim.keymap.set("n", "<leader>foc", "<cmd>OCursor<cr>")
 vim.keymap.set("n", "<leader>fof", "<cmd>OFinder<cr>")
 
+-- toggle view csv
+vim.keymap.set("n", "<leader>vc", "<cmd>:CsvViewToggle<cr>")
+
 require("mason").setup({
     ui = {
         icons = {
@@ -272,4 +275,5 @@ vim.lsp.enable({
     "gopls",
     "jsonls",
     "glsl_analyzer",
+    "bashls",
 })

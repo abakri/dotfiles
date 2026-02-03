@@ -1,0 +1,16 @@
+{
+  "my_db_1": {
+    "host": "localhost",
+    "port": 5432,
+    "database": "database_name",
+    "user": "postgres",
+    "password": "your_password"
+  },
+  "my_db_2": {
+    "host": "localhost",
+    "port": 5432,
+    "database": "other_database",
+    "user": "postgres",
+    "password": "your_password"
+  }
+}
