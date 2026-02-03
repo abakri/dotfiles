@@ -1,5 +1,11 @@
+# Reference: https://github.com/jesseduffield/lazygit/blob/443452ad6ad50056c2834c7822fd276d072ad64d/docs/Config.md?plain=1
+#
 os:
   editPreset: 'nvim'
 
 git:
   overrideGpg: true
+
+keybinding:
+  universal:
+    toggleRangeSelect: V
