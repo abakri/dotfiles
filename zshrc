@@ -244,8 +244,8 @@ function parse_git_branch() {
 export GPG_TTY=$(tty)
 export GIT_EDITOR="nvim"
 alias currbranch="git rev-parse --abbrev-ref HEAD"
-alias cpbranch="echo -n $(currbranch) | pbcopy"
-alias diffremote="git diff origin/$(currbranch)"
+alias cpbranch='echo -n $(currbranch) | pbcopy'
+alias diffremote='git diff origin/$(currbranch)'
 
 function init_git_config() {
     git config --global sequence.editor interactive-rebase-tool
