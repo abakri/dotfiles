@@ -14,9 +14,7 @@
     ~/antigen.zsh: antigen.zsh
     ~/.antigenrc: .antigenrc
     ~/.ideavimrc: .ideavimrc
-    ~/.config/atuin/config.toml: 
-      create: true
-      path: atuin/atuin.toml
+    ~/.config/atuin/config.toml: atuin.toml 
     ~/Brewfile: Brewfile
     ~/personal_scripts: scripts
     ~/python_scripts: python_scripts
