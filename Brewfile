@@ -1,7 +1,6 @@
 tap "jesseduffield/lazygit"
 brew "antigen"
 brew "cmake"
-brew "node"
 brew "atuin"
 brew "fd"
 brew "fzf"
