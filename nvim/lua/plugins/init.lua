@@ -1,21 +1,17 @@
 return {
     -- color schemes
-    "EdenEast/nightfox.nvim",
     "franbach/miramare",
-    "folke/tokyonight.nvim",
-    "navarasu/onedark.nvim",
-    'projekt0n/github-nvim-theme',
     {
-        "catppuccin/nvim",
-        name = "catppuccin",
+        'f4z3r/gruvbox-material.nvim',
+        name = 'gruvbox-material',
         lazy = false,
         priority = 1000,
-        opts = {
-            flavour = "frappe"
-        },
+        config = function()
+            require("gruvbox-material").setup({ contrast = "hard" })
+        end
     },
-    -- center buffer
-    "shortcuts/no-neck-pain.nvim",
+    { 'projekt0n/github-nvim-theme', name = "github-nvim-theme" },
+    { "catppuccin/nvim", name = "catppuccin", opts = { flavour = "frappe" } },
     -- indent lines
     {
         "lukas-reineke/indent-blankline.nvim",
@@ -142,24 +138,7 @@ return {
         },
         config = function(_, opts) require('tsc').setup(opts) end,
     },
-    {
-        'stevearc/aerial.nvim',
-        keys = {
-            { 'gA', '<cmd>AerialToggle! left<CR>', desc = 'Toggle Aerial' },
-        },
-        opts = {
-            min_width = 30,
-            max_width = { 50, 0.3 }
-        },
-        -- Optional dependencies
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter",
-            "nvim-tree/nvim-web-devicons"
-        },
-    },
-    {
-        "tpope/vim-abolish",
-    },
+    { "tpope/vim-abolish" },
     {
         "nvim-pack/nvim-spectre",
         keys = {
@@ -170,20 +149,10 @@ return {
         'stevearc/oil.nvim',
         opts = {},
         keys = {
-            { '<leader>O', '<cmd>Oil --float<cr>', desc = 'Open Oil' }
+            { '<leader>o', '<cmd>Oil --float<cr>', desc = 'Open Oil' }
         },
         -- Optional dependencies
         dependencies = { "nvim-tree/nvim-web-devicons" },
-    },
-    {
-        'echasnovski/mini.files',
-        version = '*',
-        config = function()
-            require('mini.files').setup()
-        end,
-        keys = {
-            { '<leader>o', '<cmd>lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<cr>', desc = 'Open mini files' }
-        }
     },
     {
         "hat0uma/csvview.nvim",

@@ -41,6 +41,8 @@ export GRPC_PYTHON_BUILD_SYSTEM_ZLIB=true
 # Default editor to be Neovim
 export EDITOR="nvim"
 
+export XDG_CONFIG_HOME=$HOME/.config
+
 # ALIAS
 alias rn="mv"
 alias vim="nvim"

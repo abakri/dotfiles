@@ -209,7 +209,7 @@ vim.api.nvim_create_autocmd("RecordingLeave", {
 ---------------------------------------------------------------------
 --------------------------- VISUALS ---------------------------------
 ---------------------------------------------------------------------
-vim.cmd('colorscheme github_dark_dimmed')
+-- vim.cmd('colorscheme github_dark_dimmed')
 vim.cmd('hi SignColumn guibg=NONE') -- remove sign column background
 
 ---------------------------------------------------------------------
