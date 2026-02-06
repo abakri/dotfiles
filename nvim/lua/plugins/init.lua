@@ -209,5 +209,15 @@ return {
             { "<C-e>", function() require("harpoon"):list():prev() end, desc = "harpoon to previous file", },
             { "<C-r>", function() require("harpoon"):list():next() end, desc = "harpoon to next file", },
         }
-    }
+    },
+    {
+        "OXY2DEV/markview.nvim",
+        lazy = false,
+        dependencies = { "saghen/blink.cmp" },
+        config = function()
+            require("markview").setup({
+                preview = { enable = false }
+            })
+        end
+    },
 }

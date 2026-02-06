@@ -253,8 +253,9 @@ vim.keymap.set("n", "<leader>qp", "<cmd>cprev<cr>")
 vim.keymap.set("n", "<leader>foc", "<cmd>OCursor<cr>")
 vim.keymap.set("n", "<leader>fof", "<cmd>OFinder<cr>")
 
--- toggle view csv
+-- toggle views
 vim.keymap.set("n", "<leader>vc", "<cmd>:CsvViewToggle<cr>")
+vim.keymap.set("n", "<leader>vm", "<cmd>:Markview splitToggle<cr>")
 
 require("mason").setup({
     ui = {
