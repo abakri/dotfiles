@@ -256,6 +256,7 @@ vim.keymap.set("n", "<leader>fof", "<cmd>OFinder<cr>")
 -- toggle views
 vim.keymap.set("n", "<leader>vc", "<cmd>:CsvViewToggle<cr>")
 vim.keymap.set("n", "<leader>vm", "<cmd>:Markview splitToggle<cr>")
+vim.keymap.set("n", "<leader>vn", "<cmd>:botright vsplit ~/global_note.md<cr>") -- Open a global notes file
 
 require("mason").setup({
     ui = {
