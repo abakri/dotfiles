@@ -44,7 +44,6 @@ export EDITOR="nvim"
 export XDG_CONFIG_HOME=$HOME/.config
 
 # ALIAS
-alias rn="mv"
 alias vim="nvim"
 alias vi="nvim"
 alias s="source ~/.zshrc"

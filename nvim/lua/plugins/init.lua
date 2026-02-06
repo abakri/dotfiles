@@ -1,4 +1,15 @@
 return {
+    -- TRANSPARENCY
+    {
+        "xiyaowong/transparent.nvim",
+        lazy = false,
+        priority = 1001,
+        config = function ()
+            local t = require("transparent")
+            t.setup({})
+            t.clear_prefix('lualine')
+        end
+    },
     -- color schemes
     "franbach/miramare",
     {
@@ -11,8 +22,7 @@ return {
         end
     },
     { 'projekt0n/github-nvim-theme', name = "github-nvim-theme" },
-    { "catppuccin/nvim", name = "catppuccin", opts = { flavour = "frappe" } },
-    -- indent lines
+    { "catppuccin/nvim",             name = "catppuccin",       opts = { flavour = "frappe" } },
     {
         "lukas-reineke/indent-blankline.nvim",
         main = "ibl",
@@ -176,23 +186,28 @@ return {
         cmd = { "CsvViewEnable", "CsvViewDisable", "CsvViewToggle" },
     },
     {
-        "kndndrj/nvim-dbee",
-        dependencies = {
-            "MunifTanjim/nui.nvim",
-        },
-        build = function()
-            -- Install tries to automatically detect the install method.
-            -- if it fails, try calling it with one of these parameters:
-            --    "curl", "wget", "bitsadmin", "go"
-            require("dbee").install()
-        end,
-        config = function()
-            require("dbee").setup( --[[optional config]])
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        config = function ()
+           require("harpoon"):setup()
         end,
         keys = {
-            { "<leader>db", function()
-                require("dbee").open()
-            end }
+            { "<leader>A", function() require("harpoon"):list():add() end, desc = "harpoon file", },
+            {
+                "<leader>0",
+                function()
+                    local harpoon = require("harpoon")
+                    harpoon.ui:toggle_quick_menu(harpoon:list())
+                end
+            },
+            { "<leader>1", function() require("harpoon"):list():select(1) end, desc = "harpoon to file 1", },
+            { "<leader>2", function() require("harpoon"):list():select(2) end, desc = "harpoon to file 2", },
+            { "<leader>3", function() require("harpoon"):list():select(3) end, desc = "harpoon to file 3", },
+            { "<leader>4", function() require("harpoon"):list():select(4) end, desc = "harpoon to file 4", },
+            { "<leader>5", function() require("harpoon"):list():select(5) end, desc = "harpoon to file 5", },
+            { "<C-e>", function() require("harpoon"):list():prev() end, desc = "harpoon to previous file", },
+            { "<C-r>", function() require("harpoon"):list():next() end, desc = "harpoon to next file", },
         }
-    },
+    }
 }

@@ -1,0 +1,12 @@
+{
+    "model": "claude-sonnet-4-5-20250929",
+    "alwaysThinkingEnabled": true,
+    "statusLine": {
+        "type": "command",
+        "command": "bash ~/.claude/statusline-command.sh"
+    },
+    "fileSuggestion": {
+        "type": "command",
+        "command": "bash ~/.claude/file-suggestion.sh"
+    }
+}

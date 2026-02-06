@@ -20,3 +20,5 @@
     ~/.config/ghostty/config:
       create: true
       path: term_settings/ghostty_config
+    ~/.claude/settings.json: claude/settings.json
+    ~/.claude/file-suggestion.sh: claude/file-suggestion.sh
