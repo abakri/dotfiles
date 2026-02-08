@@ -23,4 +23,5 @@ brew "tmux"
 brew "zoxide"
 brew "pipx"
 brew "jesseduffield/lazygit/lazygit"
+brew "gcc"
 # TODO: Add rectangle

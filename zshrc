@@ -34,9 +34,15 @@ command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
 # LANGUAGE SPECIFIC
-# - Python -
+# Python
 export LIBRARY_PATH="/opt/homebrew/opt/openssl/lib/"
 export GRPC_PYTHON_BUILD_SYSTEM_ZLIB=true
+
+# C++
+# Mac uses clang and the default gcc/g++ is linked internall to clang! WTF.
+# So gcc has been added to brewfile, and we create aliases to actual gcc and g++ here
+alias gcc="gcc-15"
+alias g++="g++-15"
 
 # Default editor to be Neovim
 export EDITOR="nvim"

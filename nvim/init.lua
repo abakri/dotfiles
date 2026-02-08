@@ -277,4 +277,5 @@ vim.lsp.enable({
     "jsonls",
     "glsl_analyzer",
     "bashls",
+    "clangd",
 })
