@@ -6,8 +6,11 @@ return {
         priority = 1001,
         config = function ()
             local t = require("transparent")
-            t.setup({})
-            t.clear_prefix('lualine')
+            t.setup({ extra_groups = { "NormalFloat" } })
+
+            -- Only make the middle section (c and x) of lualine transparent
+            t.clear_prefix("lualine_c")
+            t.clear_prefix("lualine_x")
         end
     },
     -- color schemes

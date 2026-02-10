@@ -55,6 +55,11 @@ alias hg="history | grep"
 alias l="echo -e '\033[1m$(pwd)\033[0m\n' && ls -G -a -1 && echo"
 alias f="fzf"
 
+# Bind Ctrl-g to edit command line
+autoload edit-command-line
+zle -N edit-command-line
+bindkey '^g' edit-command-line
+
 # Language specific aliases
 alias pptnocap="pytest --no-cov --tb=long -vv --show-capture=stdout"
 
@@ -336,3 +341,10 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# bun completions
+[ -s "/Users/aslanbakri/.bun/_bun" ] && source "/Users/aslanbakri/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
